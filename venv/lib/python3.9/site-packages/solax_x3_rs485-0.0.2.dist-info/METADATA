@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: solax-x3-rs485
+Version: 0.0.2
+Summary: A library to read information from your Solax X3 solar inverter through its RS485 port
+Home-page: https://github.com/jvdslikke/py-solax-x3-rs485
+Author: Johan van der Slikke
+Author-email: johan@vdslikke.net
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/jvdslikke/py-solax-x3-rs485/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Home Automation
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pymodbus
+
+# Description
+
+A library to read information from your Solax X3 solar inverter through its RS485 port.
+
+# Cable
+
+Connect pin 4 and 5 to the A and B ports of an USB to RS485 adapter. See page 34 of [the manual](https://www.solaxpower.com/wp-content/uploads/2020/02/X3-PRO-USER-MANUAL.pdf).
+
+# Example
+
+```
+import solaxx3rs485
+
+modbusMeter = solaxx3rs485.SolaxX3RS485Client("/dev/ttyUSB1")
+data = modbusMeter.get_data()
+
+print(data.yield_today)
+```
+
+# Credits
+
+Based on code by "barche", see: https://github.com/InfernoEmbedded/PowerScraper/pull/16.
+
