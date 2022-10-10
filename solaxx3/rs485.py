@@ -3,7 +3,7 @@ from pymodbus.client.sync import ModbusSerialClient
 from datetime import date, datetime, timedelta
 from struct import *
 from solaxx3.registers import SolaxRegistersInfo
-from time import sleep
+from time import sleep, perf_counter
 
 
 class SolaxX3G4:
@@ -19,7 +19,8 @@ class SolaxX3G4:
         stopbits=1,
         bytesize=8,
     ) -> None:
-        self._registers_values_list = []
+        self._input_registers_values_list = []
+        self._holding_registers_values_list = []
 
         self.client = ModbusSerialClient(
             method=method,
@@ -35,32 +36,26 @@ class SolaxX3G4:
         self.connected = self.client.connect()
         return self.connected
 
-    def __join_msb_lsb(self, msb: int, lsb: int) -> int:
+    def _join_msb_lsb(self, msb: int, lsb: int) -> int:
         return (msb << 16) | lsb
 
     def _unsigned16(self, type: str, addr: int, count: int = 1, unit: int = 1) -> int:
-        if type == "input":
-            return self.client.read_input_registers(
-                address=addr, count=count, unit=unit
-            ).getRegister(0)
-        elif type == "holding":
-            return self.client.read_holding_registers(
-                address=addr, count=count, unit=unit
-            ).getRegister(0)
 
-    def _readRawRegVar(
+        self._input_registers_values_list
+        if type == "input":
+            return self._input_registers_values_list[addr]
+        elif type == "holding":
+            return self._holding_registers_values_list[addr]
+
+    def _readRegisterRange(
         self, type: str, addr: int, count: int = 1, unit: int = 1
-    ) -> int:
+    ) -> list:
         if type == "input":
-            return self.client.read_input_registers(
-                address=addr, count=count, unit=unit
-            )
+            return self._input_registers_values_list[addr : addr + count]
         elif type == "holding":
-            return self.client.read_holding_registers(
-                address=addr, count=count, unit=unit
-            )
+            return self._holding_registers_values_list[addr : addr + count]
 
-    def _twos_comp(self, number: int, bits: int) -> int:
+    def _twos_complement(self, number: int, bits: int) -> int:
         """
         Compute the 2's complement of the int value val
         """
@@ -73,7 +68,7 @@ class SolaxX3G4:
 
         return number
 
-    def __read_register(self, register_type: str, register_info: dict) -> Any:
+    def _read_register(self, register_type: str, register_info: dict) -> Any:
         """Read the values from a register based on length and sign
 
         Parameters:
@@ -86,24 +81,24 @@ class SolaxX3G4:
                 val = self._unsigned16(register_type, register_info["address"])
 
             if register_info["data_length"] == 2:
-                val = self.__join_msb_lsb(
+                val = self._join_msb_lsb(
                     self._unsigned16(register_type, register_info["address"] + 1),
                     self._unsigned16(register_type, register_info["address"]),
                 )
 
             if register_info["signed"]:
-                val = self._twos_comp(val, register_info["data_length"] * 16)
+                val = self._twos_complement(val, register_info["data_length"] * 16)
 
             val = val / register_info["si_adj"]
 
         elif "varchar" in register_info["data_format"]:
-            block = self._readRawRegVar(
+            block = self._readRegisterRange(
                 register_type, register_info["address"], register_info["data_length"]
             )
             sn = []
             for i in range(register_info["data_length"]):
                 first_byte, second_byte = unpack(
-                    "BB", int.to_bytes(block.getRegister(i), 2, "little")
+                    "BB", int.to_bytes(block[i], 2, "little")
                 )
                 if not second_byte == 0x0:
                     sn.append(chr(second_byte))
@@ -112,15 +107,9 @@ class SolaxX3G4:
             val = "".join(sn)
 
         elif "datetime" in register_info["data_format"]:
-            block = self._readRawRegVar(
+            sec, min, hr, day, mon, year = self._readRegisterRange(
                 register_type, register_info["address"], register_info["data_length"]
             )
-            sec = block.getRegister(0)
-            min = block.getRegister(1)
-            hr = block.getRegister(2)
-            day = block.getRegister(3)
-            mon = block.getRegister(4)
-            year = block.getRegister(5)
 
             inverter_datetime = (
                 f"{(year+2000):02}-{mon:02}-{day:02} {hr:02}:{min:02}:{sec:02}"
@@ -137,7 +126,7 @@ class SolaxX3G4:
             register_info:dict  - dictionary with register definition fields
         """
 
-        val = self.__read_register(register_info["register_type"], register_info)
+        val = self._read_register(register_info["register_type"], register_info)
 
         if not "data_unit" in register_info:
             return (val, "N/A")
@@ -159,7 +148,8 @@ class SolaxX3G4:
         return r.list_register_names()
 
     def read_all_registers(self) -> None:
-        self._registers_values_list = []
+        self._input_registers_values_list = []
+        self._holding_registers_values_list = []
 
         read_block_length = 100
         for i in range(3):
@@ -167,7 +157,17 @@ class SolaxX3G4:
             values_list = self.client.read_input_registers(
                 address=address, count=read_block_length, unit=1
             ).registers
-            self._registers_values_list.extend(values_list)
+            self._input_registers_values_list.extend(values_list)
+
+            # this is mandatory for the safety of the invertor (according to manufacturer' instructions)
+            sleep(1)
+
+        for i in range(3):
+            address = i * read_block_length
+            values_list = self.client.read_holding_registers(
+                address=address, count=read_block_length, unit=1
+            ).registers
+            self._holding_registers_values_list.extend(values_list)
 
             # this is mandatory for the safety of the invertor (according to manufacturer' instructions)
             sleep(1)
