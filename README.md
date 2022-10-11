@@ -9,7 +9,7 @@
 <h3 align="center">Solax X3</h3>
 
   <p align="center">
-    A module to read Solax X3 registers via its modbus interface (RS-485).
+    A module to read from the solar inverter Solax X3's registers via its modbus interface (RS-485).
     <br />
 
 
@@ -47,31 +47,24 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This is module is build on top of pymodbus and add specifics to the work with Solax X3 inverter via its RTU interface.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+* Solax X3 inverter
+* Modbus RS-485 serial adapter/interface
+* Modbus cable
+* Install this python module
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/mkfam7/solax-x3.git
    ```
-3. Install NPM packages
+2. Install python packages
    ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+   pip pymodbus install solax-x3
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -82,6 +75,23 @@ This is an example of how to list things you need to use the software and how to
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+```
+from pymodbus.client.sync import ModbusSerialClient
+from solaxx3.rs485 import SolaxX3
+
+
+s = SolaxX3(port="/dev/ttyUSB0", baudrate=115200)
+
+
+if s.connect():
+    s.read_all_registers()
+    print(f"Battery temperature: {s.read('temperature_battery')}")
+else:
+    print("Cannot connect to the Modbus Server/Slave")
+    exit()
+
+```
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
