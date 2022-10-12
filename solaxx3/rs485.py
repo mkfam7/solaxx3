@@ -159,15 +159,9 @@ class SolaxX3:
             ).registers
             self._input_registers_values_list.extend(values_list)
 
-            # this is mandatory for the safety of the invertor (according to manufacturer' instructions)
-            sleep(1)
-
         for i in range(3):
             address = i * read_block_length
             values_list = self.client.read_holding_registers(
                 address=address, count=read_block_length, unit=1
             ).registers
             self._holding_registers_values_list.extend(values_list)
-
-            # this is mandatory for the safety of the invertor (according to manufacturer' instructions)
-            sleep(1)
