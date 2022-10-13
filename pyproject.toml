@@ -1,0 +1,26 @@
+# pyproject.toml
+
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solaxx3"
+version = "0.0.6"
+description = "Read Solax X3 inverter registers via modbus interface (RS-485)"
+readme = "README.md"
+authors = [{ name = "Flavius Moldovan", email = "mkfam@protonmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["Solax", "solax-x3", "solaxx3", "solar inverter", "RTU", "MODBUS"]
+dependencies = [
+    "pymodbus[serial] >= 3.0.0",
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = "https://github.com/mkfam7/solax-x3"
