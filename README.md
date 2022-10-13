@@ -44,7 +44,7 @@ else:
 
 ```
 
-Project Link: [https://github.com/mkfam7/solax-x3](https://github.com/mkfam7/solax-x3)
+Project Link: [https://github.com/mkfam7/solaxx3](https://github.com/mkfam7/solaxx3)
 
 
 
