@@ -7,7 +7,7 @@
 
 * Solax X3 inverter
 * Modbus RS-485 serial adapter/interface
-* [Modbus cable](https://github.com/mkfam7/solaxx3)
+* [Modbus cable](https://github.com/mkfam7/solaxx3/blob/main/diagrams/rs485_cable.png)
 * python version >= 3.8
 * This python module
 
@@ -44,7 +44,7 @@ else:
 
 ```
 
-Project Link: [https://github.com/mkfam7/solax-x3](https://github.com/mkfam7/solax-x3)
+Project Link: [https://github.com/mkfam7/solaxx3](https://github.com/mkfam7/solaxx3)
 
 
 
