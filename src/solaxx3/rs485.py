@@ -1,6 +1,5 @@
 from typing import Any
 
-# from pymodbus.client.sync import ModbusSerialClient
 from pymodbus.client import ModbusSerialClient
 from datetime import date, datetime, timedelta
 from struct import *
