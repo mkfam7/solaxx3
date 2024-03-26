@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from pymodbus.client import ModbusSerialClient
-from solaxx3.rs485 import SolaxX3
+from solaxx3.solaxx3 import SolaxX3
 import mysql.connector
 
 s = SolaxX3(port="/dev/ttyUSB0", baudrate=115200)
@@ -47,7 +47,6 @@ if s.connect():
     mycursor = mydb.cursor()
 
     try:
-
         # create the sql statement
         sql = """REPLACE INTO solax_local (
                                       uploadTime,
