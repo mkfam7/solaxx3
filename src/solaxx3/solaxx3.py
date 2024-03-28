@@ -50,7 +50,7 @@ class SolaxX3:
         self.connected = self.client.connect()
         return self.connected
 
-    def _get_raw_register_16(self, value_type: str, address: int) -> int:
+    def _get_unsigned_16(self, value_type: str, address: int) -> int:
         if value_type == "input":
             return self._input_registers_values[address]
         elif value_type == "holding":
@@ -120,12 +120,12 @@ class SolaxX3:
         register_type = register_info["register_type"]
 
         if register_info["data_length"] == 1:
-            val = self._get_raw_register_16(register_type, register_info["address"])
+            val = self._get_unsigned_16(register_type, register_info["address"])
 
         if register_info["data_length"] == 2:
             val = join_msb_lsb(
-                self._get_raw_register_16(register_type, register_info["address"] + 1),
-                self._get_raw_register_16(register_type, register_info["address"]),
+                self._get_unsigned_16(register_type, register_info["address"] + 1),
+                self._get_unsigned_16(register_type, register_info["address"]),
             )
 
         if register_info["signed"]:
