@@ -21,7 +21,7 @@ pip install solaxx3
 
 
 ```
-from solaxx3.rs485 import SolaxX3
+from solaxx3.solaxx3 import SolaxX3
 
 # adjust the serial port and baud rate as necessary
 s = SolaxX3(port="/dev/ttyUSB0", baudrate=115200)
