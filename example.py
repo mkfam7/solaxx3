@@ -8,7 +8,7 @@ if s.connect():
 
     available_stats = s.list_register_names()
     for stat in available_stats:
-        print(stat)
+        print(stat, f"   {s.read(stat)}")
 
     battery_temperature = s.read("temperature_battery")
     print(f"\n\nBattery temperature: {s.read('temperature_battery')}")
