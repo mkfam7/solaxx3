@@ -28,7 +28,7 @@ class SolaxX3:
         method: str = "rtu",
         port: str = "/dev/ttyUSB0",
         baudrate: int = 115200,
-        timeout: int | float = 3,
+        timeout: int = 3,
         parity: Literal["E", "O", "N"] = "N",
         stopbits: Literal[0, 1, 2] = 1,
         bytesize: Literal[7, 8] = 8,
