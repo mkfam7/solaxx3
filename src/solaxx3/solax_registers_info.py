@@ -1522,7 +1522,7 @@ class SolaxRegistersInfo:
             "data_length": 7,
             "description": "Module name",
         },
-        "start_time": {  # modified
+        "start_time": {
             "address": 0x0016,
             "register_type": "holding",
             "data_format": "uint16",
@@ -1541,7 +1541,7 @@ class SolaxRegistersInfo:
             "data_unit": "second",
             "data_length": 1,
             "description": "Reconnection time",
-        },  # done
+        },
         "checking_time": {
             "address": 0x0018,
             "register_type": "holding",
@@ -1551,7 +1551,7 @@ class SolaxRegistersInfo:
             "data_unit": "second",
             "data_length": 1,
             "description": "Checking time",
-        },  # done
+        },
         "vac_min_protect": {
             "address": 0x0019,
             "register_type": "holding",
@@ -1561,7 +1561,7 @@ class SolaxRegistersInfo:
             "data_unit": "V",
             "data_length": 1,
             "description": "Allowed minimum grid voltage",
-        },  # done
+        },
         "vac_max_protect": {
             "address": 0x001A,
             "register_type": "holding",
@@ -1571,7 +1571,7 @@ class SolaxRegistersInfo:
             "data_unit": "V",
             "data_length": 1,
             "description": "Allowed maximum grid voltage",
-        },  # done
+        },
         "fac_min_protect": {
             "address": 0x001B,
             "register_type": "holding",
@@ -1581,7 +1581,7 @@ class SolaxRegistersInfo:
             "data_unit": "Hz",
             "data_length": 1,
             "description": "Allowed minimum grid frequency",
-        },  # done
+        },
         "fac_max_protect": {
             "address": 0x001C,
             "register_type": "holding",
@@ -1591,8 +1591,8 @@ class SolaxRegistersInfo:
             "data_unit": "Hz",
             "data_length": 1,
             "description": "Allowed maximum grid frequency",
-        },  # done
-        "safety_code": {  # 0-500
+        },
+        "safety_code": {
             "address": 0x001D,
             "register_type": "holding",
             "data_format": "uint16",
@@ -1601,8 +1601,8 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "data_length": 1,
             "description": "Safety type",
-        },  # done
-        "mate_box_enable": {  # 0 or 1
+        },
+        "mate_box_enable": {
             "address": 0x001E,
             "register_type": "holding",
             "data_format": "uint16",
@@ -1611,7 +1611,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "data_length": 1,
             "description": "0:Disable 1:Enable",
-        },  # done
+        },
         "grid_10_min_avg_protect": {
             "address": 0x001F,
             "register_type": "holding",
@@ -1672,7 +1672,7 @@ class SolaxRegistersInfo:
             "data_length": 1,
             "description": "Output power limits precent",
         },
-        "powerfactor_mode": {  # 0-5
+        "powerfactor_mode": {
             "address": 0x0026,
             "register_type": "holding",
             "data_format": "uint16",
@@ -1998,7 +1998,7 @@ class SolaxRegistersInfo:
             "data_format": "int16",
             "si_adj": 1,
             "signed": True,
-            "data_unit": "second",  # !!!
+            "data_unit": "second",
             "data_length": 1,
             "description": "Connection Observation time",
         },
@@ -2058,7 +2058,7 @@ class SolaxRegistersInfo:
             "data_format": "int16",
             "si_adj": 1,
             "signed": True,
-            "data_unit": "second",  # !!!
+            "data_unit": "second",
             "data_length": 1,
             "description": "Reconnection Observation time",
         },
@@ -2162,7 +2162,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "RTC datetime",
         },
-        "solar_charger_use_mode": {  # 0-3
+        "solar_charger_use_mode": {
             "address": 0x008B,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2172,7 +2172,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Solar Charger Use Mode",
         },
-        "manual_mode": {  # 0-2
+        "manual_mode": {
             "address": 0x008C,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2182,7 +2182,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Manual Mode",
         },
-        "w_battery1_type": {  # 0/1
+        "w_battery1_type": {
             "address": 0x008D,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2242,9 +2242,17 @@ class SolaxRegistersInfo:
             "data_unit": "V",
             "description": "Lead-acid battery absorpt voltage",
         },
-        # NOTE: Could not transcribe registers with addresses 0x0093 though 0x009A inclusive
-        # because of two registers in the same address.
-        "set_charge_and_discharge_period_2_enable": {  # 0/1
+        "self_use_night_charge_upper_soc": {
+            "address": 0x0094,
+            "register_type": "holding",
+            "data_format": "uint16",
+            "si_adj": 1,
+            "signed": False,
+            "data_length": 1,
+            "data_unit": "%",
+            "description": "This value will be enabled if SelfUse_NightCharge_Enable is 1.",
+        },
+        "set_charge_and_discharge_period_2_enable": {
             "address": 0x009B,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2254,8 +2262,6 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Whether to use period 2.",
         },
-        # NOTE: Could not transcribe registers with addresses 0x009C though 0x009F inclusive
-        # because of two registers in the same address.
         "eps_restart_soc": {
             "address": 0x00A0,
             "register_type": "holding",
@@ -2296,8 +2302,6 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Battery Heating En; 0:Disable  1:Enable",
         },
-        # NOTE: Could not transcribe registers with addresses 0x00A4 though 0x00A7 inclusive
-        # because of two registers in the same address.
         "w_battery_discharge_backup_voltage": {
             "address": 0x00A8,
             "register_type": "holding",
@@ -2331,7 +2335,7 @@ class SolaxRegistersInfo:
         "modbus_rtu_address": {
             "address": 0x00AF,
             "register_type": "holding",
-            "data_format": "uint16",  # ?
+            "data_format": "uint16",
             "si_adj": 1,
             "signed": False,
             "data_length": 1,
@@ -2345,10 +2349,9 @@ class SolaxRegistersInfo:
             "si_adj": 1,
             "signed": False,
             "data_length": 1,
-            "data_unit": "bps",
+            "data_unit": "N/A",
             "description": "Modbus RTU braud rate; 0:115200 1:57600 2:56000 3:38400 4:19200 5:14400 6:9600",
         },
-        # NOTE: This register might have been marked as reserved. See in docs.
         "eps_bat_low_auto_recover_voltage": {
             "address": 0x00B1,
             "register_type": "holding",
@@ -2419,7 +2422,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Off-grid Frequency",
         },
-        "inverter_power_type": {  # 3000-15000
+        "inverter_power_type": {
             "address": 0x00BA,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2429,7 +2432,7 @@ class SolaxRegistersInfo:
             "data_unit": "W",
             "description": "Inverter power type",
         },
-        "language": {  # 0-6
+        "language": {
             "address": 0x00BB,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2439,7 +2442,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Language",
         },
-        "enable_mppt": {  # 0/1
+        "enable_mppt": {
             "address": 0x00BC,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2519,7 +2522,7 @@ class SolaxRegistersInfo:
             "data_unit": "second",
             "description": "wTufp L1",
         },
-        "wTofp_L1": {
+        "wtofp_l1": {
             "address": 0x00C4,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2529,7 +2532,7 @@ class SolaxRegistersInfo:
             "data_unit": "second",
             "description": "wTofp L1",
         },
-        "test_step": {  # 1-9
+        "test_step": {
             "address": 0x00C5,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2636,7 +2639,7 @@ class SolaxRegistersInfo:
             "si_adj": 1,
             "signed": False,
             "data_length": 1,
-            "data_unit": "second",  # !!!
+            "data_unit": "second",
             "description": "Self Test Ovp 10m Avg Time (Ovp_10(59.S1))",
         },
         "self_test_ofp_val_restrictive": {
@@ -2709,7 +2712,7 @@ class SolaxRegistersInfo:
             "data_unit": "second",
             "description": "Self Test Time",
         },
-        "main_breaker_current_limit": {  # 32-100
+        "main_breaker_current_limit": {
             "address": 0x00D7,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2719,9 +2722,7 @@ class SolaxRegistersInfo:
             "data_unit": "A",
             "description": "Main Breaker Current Limit",
         },
-        # NOTE: Did not write registers with addresses 0x00D8 and 0x00D9 because
-        # they have a strikethough.
-        "w_inverter_output_switch": {  # 0/1
+        "w_inverter_output_switch": {
             "address": 0x00DA,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2771,8 +2772,7 @@ class SolaxRegistersInfo:
             "data_unit": "Hz",
             "description": "OFPL fstop disch",
         },
-        # NOTE: Not sure if name is correct. In docs: 'OFPL_fPmin'
-        "ofpl_f_pmin": {
+        "ofpl_fpmin": {
             "address": 0x00DF,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2832,7 +2832,7 @@ class SolaxRegistersInfo:
             "data_unit": "second",
             "description": "Underfrequency load increase delay time",
         },
-        "ofpl_curve_type": {  # 0/1
+        "ofpl_curve_type": {
             "address": 0x00E5,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2912,12 +2912,11 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "General Hard Limit En",
         },
-        # NOTE: Not sure what value to set at si_adj field
         "w_ac_power_limit": {
             "address": 0x00ED,
             "register_type": "holding",
             "data_format": "uint16",
-            "si_adj": 1,
+            "si_adj": 10,
             "signed": False,
             "data_length": 1,
             "data_unit": "VA",
@@ -2943,23 +2942,21 @@ class SolaxRegistersInfo:
             "data_unit": "%",
             "description": "Reconnect slop",
         },
-        # NOTE: Not sure what value to set at si_adj field
         "hard_export_power": {
             "address": 0x00F0,
             "register_type": "holding",
             "data_format": "uint16",
-            "si_adj": 1,
+            "si_adj": 10,
             "signed": False,
             "data_length": 1,
             "data_unit": "W",
             "description": "Hard Export Power",
         },
-        # NOTE: Not sure what value to set at si_adj field
         "hard_ac_power_t_limit": {
             "address": 0x00F1,
             "register_type": "holding",
             "data_format": "uint16",
-            "si_adj": 1,
+            "si_adj": 10,
             "signed": False,
             "data_length": 1,
             "data_unit": "VA",
@@ -3035,7 +3032,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Pu Func 3Tau",
         },
-        "pu_func_enable": {  # 0/1
+        "pu_func_enable": {
             "address": 0x00F9,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3105,8 +3102,7 @@ class SolaxRegistersInfo:
             "data_unit": "Hz",
             "description": "UFPL fstop ch",
         },
-        # NOTE: Not sure if name is correct. In docs: 'UFPL_fPmax'
-        "ufpl_fp_max": {
+        "ufpl_fpmax": {
             "address": 0x0101,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3116,7 +3112,7 @@ class SolaxRegistersInfo:
             "data_unit": "Hz",
             "description": "UFPL fPmax",
         },
-        "drm_function_enable": {  # 0/1
+        "drm_function_enable": {
             "address": 0x0102,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3126,7 +3122,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "DRM Function Enable",
         },
-        "ct_type": {  # 100/200
+        "ct_type": {
             "address": 0x0103,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3136,7 +3132,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Ct Type",
         },
-        "w_shadow_fix_func_enable": {  # 0-3
+        "w_shadow_fix_func_enable": {
             "address": 0x0104,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3156,7 +3152,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Machine type: 1:X1, 3:X3",
         },
-        "phase_power_balance": {  # 0/1
+        "phase_power_balance": {
             "address": 0x0106,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3166,7 +3162,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Phase Power Balance",
         },
-        "w_machine_style": {  # 0/1
+        "w_machine_style": {
             "address": 0x0107,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3176,7 +3172,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "w Machine Style",
         },
-        "meter_function": {  # 0/1
+        "meter_function": {
             "address": 0x0108,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3186,7 +3182,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Meter Function",
         },
-        "meter1_id": {  # 1-200
+        "meter1_id": {
             "address": 0x0109,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3196,7 +3192,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Meter1 ID",
         },
-        "meter2_id": {  # 1-200
+        "meter2_id": {
             "address": 0x010A,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3206,7 +3202,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Meter2 ID",
         },
-        "direction_meter_ct_1": {  # 0/1
+        "direction_meter_ct_1": {
             "address": 0x010B,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3216,7 +3212,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Direction Meter CT 1",
         },
-        "direction_meter_2": {  # 0/1
+        "direction_meter_2": {
             "address": 0x010C,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3226,7 +3222,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Direction Meter 2",
         },
-        "external_inv": {  # 0/1
+        "external_inv": {
             "address": 0x010D,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3236,7 +3232,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "External Inv",
         },
-        "input_di_1": {  # 0:Low-level or 1:High-level
+        "input_di_1": {
             "address": 0x0110,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3244,9 +3240,9 @@ class SolaxRegistersInfo:
             "signed": False,
             "data_length": 1,
             "data_unit": "N/A",
-            "description": "Input DI 1",
+            "description": "Input DI 1; 0:Low-level or 1:High-level",
         },
-        "disch_cut_off_point_different_en": {  # 0/1
+        "disch_cut_off_point_different_en": {
             "address": 0x0111,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3266,7 +3262,7 @@ class SolaxRegistersInfo:
             "data_unit": "V",
             "description": "Lead-acid Battery discharge cut-off voltage in on-grid mode",
         },
-        "shadow_fix_func_enable_2": {  # 0-3
+        "shadow_fix_func_enable_2": {
             "address": 0x0114,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3276,7 +3272,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Shadow Fix Func Enable 2",
         },
-        "meter_ct_select": {  # 0/1
+        "meter_ct_select": {
             "address": 0x0115,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3286,7 +3282,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Meter/CT select",
         },
-        "fvrt_function": {  # 0/1
+        "fvrt_function": {
             "address": 0x0116,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3316,7 +3312,6 @@ class SolaxRegistersInfo:
             "data_unit": "V",
             "description": "If FVRT_Function is enable, FVRT Vac lower limit is available.",
         },
-        # NOTE: Not sure if name is correct. In docs: 'bPVConnectionMode'
         "bpv_connection_mode": {
             "address": 0x011B,
             "register_type": "holding",
@@ -3327,7 +3322,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "PV connection",
         },
-        "shut_down": {  # 0/1
+        "shut_down": {
             "address": 0x011C,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3337,7 +3332,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Shut Down",
         },
-        "micro_grid": {  # 0/1
+        "micro_grid": {
             "address": 0x011D,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3347,7 +3342,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Micro Grid",
         },
-        "selfuse_mode_backup_en": {  # 0/1
+        "self_use_mode_backup_en": {
             "address": 0x011E,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3357,7 +3352,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Selfuse Mode Backup En",
         },
-        "b_self_use_backup_soc": {  # 10-100
+        "b_self_use_backup_soc": {
             "address": 0x011F,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3367,7 +3362,7 @@ class SolaxRegistersInfo:
             "data_unit": "%",
             "description": "b Self Use Backup Soc",
         },
-        "b_lease_mode_enable": {  # 0/1
+        "b_lease_mode_enable": {
             "address": 0x0120,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3377,7 +3372,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "b Lease Mode Enable",
         },
-        "b_device_lock_flag": {  # 0/1
+        "b_device_lock_flag": {
             "address": 0x0121,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3387,7 +3382,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "b Device Lock Flag",
         },
-        "manual_mode_control": {  # 0/1
+        "manual_mode_control": {
             "address": 0x0122,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3437,8 +3432,7 @@ class SolaxRegistersInfo:
             "data_unit": "%",
             "description": "SOC trigger point of breaking action",
         },
-        # NOTE: added a character in the name
-        "minimum_per_one_signal": {
+        "minimum_per_on_signal": {
             "address": 0x0127,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3448,8 +3442,6 @@ class SolaxRegistersInfo:
             "data_unit": "min",
             "description": "Minimum duration of single pull in",
         },
-        # NOTE: Based on description, the data unit might be second or minute,
-        # but no data unit was specified in the docs. Set it to N/A.
         "maximum_per_day_on": {
             "address": 0x0128,
             "register_type": "holding",
@@ -3460,7 +3452,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Maximum cumulative pickup time of the day",
         },
-        "b_schedule_enable": {  # 0/1
+        "b_schedule_enable": {
             "address": 0x0129,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3470,9 +3462,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "b Schedule Enable",
         },
-        # NOTE: Could not transcribe registers with addresses 0x012A though 0x012D inclusive
-        # because of two registers per address.
-        "work_mode": {  # 0-2
+        "work_mode": {
             "address": 0x012E,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3482,7 +3472,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Work Mode",
         },
-        "dry_contact_mode": {  # 0/1
+        "dry_contact_mode": {
             "address": 0x012F,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3492,7 +3482,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Dry Contact Mode",
         },
-        "parallel_setting": {  # 0-2
+        "parallel_setting": {
             "address": 0x0130,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3502,7 +3492,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Parallel Setting",
         },
-        "external_gen_en": {  # 0/1
+        "external_gen_en": {
             "address": 0x0131,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3512,18 +3502,17 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "External Gen En",
         },
-        # NOTE: Not sure what value to set at si_adj field
         "external_gen_max_charge": {
             "address": 0x0132,
             "register_type": "holding",
             "data_format": "uint16",
-            "si_adj": 1,
+            "si_adj": 10,
             "signed": False,
             "data_length": 1,
             "data_unit": "W",
             "description": "External Gen Max Charge",
         },
-        "485_comm_fun_select": {  # 0/1
+        "485_comm_fun_select": {
             "address": 0x013E,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3542,15 +3531,9 @@ class SolaxRegistersInfo:
         return list(self._registers.keys())
 
     def list_holding_registers(self):
-        r = []
-        for reg in self._registers:
-            if self._registers[reg]["register_type"] == "holding":
-                r.append(reg)
-        return r
+        f = lambda register: self._registers[register]["register_type"] == "holding"
+        return list(filter(f, self._registers))
 
     def list_input_registers(self):
-        r = []
-        for reg in self._registers:
-            if self._registers[reg]["register_type"] == "input":
-                r.append(reg)
-        return r
+        f = lambda register: self._registers[register]["register_type"] == "input"
+        return list(filter(f, self._registers))
