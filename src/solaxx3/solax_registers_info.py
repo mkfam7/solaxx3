@@ -1892,7 +1892,7 @@ class SolaxRegistersInfo:
             "data_length": 1,
             "description": "PowerFactor_Qu_QuDelayTimer",
         },
-        "power_factor_qu_qu_lock_en": {
+        "power_factor_qu_qu_lock_enable": {
             "address": 0x003C,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2002,7 +2002,7 @@ class SolaxRegistersInfo:
             "data_length": 1,
             "description": "Connection Observation time",
         },
-        "w_connection_gradient_en": {
+        "w_connection_gradient_enable": {
             "address": 0x0047,
             "register_type": "holding",
             "data_format": "int16",
@@ -2062,7 +2062,7 @@ class SolaxRegistersInfo:
             "data_length": 1,
             "description": "Reconnection Observation time",
         },
-        "w_reconnection_gradient_en": {
+        "w_reconnection_gradient_enable": {
             "address": 0x004D,
             "register_type": "holding",
             "data_format": "int16",
@@ -2272,7 +2272,7 @@ class SolaxRegistersInfo:
             "data_unit": "%",
             "description": "Eps restart soc; 10-100",
         },
-        "hot_standby_en": {
+        "hot_standby_enable": {
             "address": 0x00A1,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2292,7 +2292,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Extend Bms Setting; 0:Disable  1:Enable",
         },
-        "battery_heating_en": {
+        "battery_heating_enable": {
             "address": 0x00A3,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2872,7 +2872,7 @@ class SolaxRegistersInfo:
             "data_unit": "Hz",
             "description": "Underfrequency load increase frequency remove point",
         },
-        "export_soft_limit_en": {
+        "export_soft_limit_enable": {
             "address": 0x00E9,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2882,7 +2882,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Export Soft Limit En",
         },
-        "export_hard_limit_en": {
+        "export_hard_limit_enable": {
             "address": 0x00EA,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2892,7 +2892,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Export Hard Limit En",
         },
-        "general_soft_limit_en": {
+        "general_soft_limit_enable": {
             "address": 0x00EB,
             "register_type": "holding",
             "data_format": "uint16",
@@ -2902,7 +2902,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "General Soft Limit En",
         },
-        "general_hard_limit_en": {
+        "general_hard_limit_enable": {
             "address": 0x00EC,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3242,7 +3242,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Input DI 1; 0:Low-level or 1:High-level",
         },
-        "disch_cut_off_point_different_en": {
+        "disch_cut_off_point_different_enable": {
             "address": 0x0111,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3342,7 +3342,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Micro Grid",
         },
-        "self_use_mode_backup_en": {
+        "self_use_mode_backup_enable": {
             "address": 0x011E,
             "register_type": "holding",
             "data_format": "uint16",
@@ -3492,7 +3492,7 @@ class SolaxRegistersInfo:
             "data_unit": "N/A",
             "description": "Parallel Setting",
         },
-        "external_gen_en": {
+        "external_gen_enable": {
             "address": 0x0131,
             "register_type": "holding",
             "data_format": "uint16",
