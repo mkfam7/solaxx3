@@ -1,3 +1,7 @@
+![Build badge](https://github.com/mkfam7/solaxx3/actions/workflows/python-package.yml/badge.svg)
+
+
+
 # solax-x3
 ####  Read in real-time all parameters provided by Solax X3 solar inverter via its Modbus S-485 serial interface.
 
