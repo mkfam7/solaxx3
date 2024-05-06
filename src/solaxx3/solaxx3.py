@@ -131,7 +131,7 @@ class SolaxX3:
             val = twos_complement(val, register_info["data_length"] * 16)
         return val
 
-    def is_register_type_integer(self, register_info: dict[str, Any]) -> bool:
+    def is_register_type_integer(self, register_info: dict) -> bool:
         return "int" in register_info["data_format"]
 
     def read_register_value(self, register_info: dict) -> tuple:
