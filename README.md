@@ -1,4 +1,4 @@
-![Build badge](https://github.com/mkfam7/solaxx3/actions/workflows/python-package.yml/badge.svg?branch=develop)
+![Build badge](https://github.com/mkfam7/solaxx3/actions/workflows/python-package.yml/badge.svg)
 
 
 
