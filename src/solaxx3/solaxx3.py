@@ -89,7 +89,6 @@ class SolaxX3:
         sec, min, hr, day, mon, year = self._read_register_range(
             register_type, register_info["address"], register_info["data_length"]
         )
-        # modified !!!
         inverter_datetime = f"{year:02}-{mon:02}-{day:02} {hr:02}:{min:02}:{sec:02}"
         value = datetime.strptime(inverter_datetime, "%y-%m-%d %H:%M:%S")
         return value
@@ -132,7 +131,7 @@ class SolaxX3:
             val = twos_complement(val, register_info["data_length"] * 16)
         return val
 
-    def is_register_type_integer(self, register_info: dict[str, Any]) -> bool:
+    def is_register_type_integer(self, register_info: dict) -> bool:
         return "int" in register_info["data_format"]
 
     def read_register_value(self, register_info: dict) -> tuple:
