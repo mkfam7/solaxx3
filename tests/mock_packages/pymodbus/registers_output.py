@@ -1,3 +1,5 @@
+"""Raw register values, just read from the inverter."""
+
 raw_input_register_values = [
     2364,
     40,
