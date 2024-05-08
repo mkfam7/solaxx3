@@ -1,3 +1,5 @@
+"""The formatted register values."""
+
 import datetime
 
 
