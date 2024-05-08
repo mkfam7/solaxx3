@@ -1,3 +1,5 @@
+"""Class loading and storing data from the inverter."""
+
 from datetime import datetime
 from struct import unpack
 from typing import Any, Literal
@@ -22,6 +24,7 @@ class SolaxX3:
     """
 
     connected: bool = False
+    READ_BLOCK_LENGTH = 100
 
     def __init__(
         self,
@@ -47,22 +50,21 @@ class SolaxX3:
         )
 
     def connect(self) -> bool:
+        """Connect to the inverter and return if it was successful."""
         self.connected = self.client.connect()
         return self.connected
 
     def _get_unsigned_16(self, value_type: str, address: int) -> int:
         if value_type == "input":
             return self._input_registers_values[address]
-        elif value_type == "holding":
-            return self._holding_registers_values[address]
+        return self._holding_registers_values[address]
 
     def _read_register_range(
         self, value_type: str, address: int, count: int = 1
     ) -> list:
         if value_type == "input":
             return self._input_registers_values[address : address + count]
-        elif value_type == "holding":
-            return self._holding_registers_values[address : address + count]
+        return self._holding_registers_values[address : address + count]
 
     def _read_format_register_value(self, register_info: dict) -> Any:
         """Read the values from a register based on length and sign
@@ -71,52 +73,53 @@ class SolaxX3:
             register_info:dict  - dictionary with register definition fields
         """
 
-        if self.is_register_type_integer(register_info):
+        if self._is_register_type_integer(register_info):
             value = self._get_integer_value(register_info)
             value = value / register_info["si_adj"]
 
         elif self._is_register_type_string(register_info):
             value = self._get_string_value(register_info)
 
-        elif self._is_register_type_datetime(register_info):
+        else:
             value = self._get_datetime_value(register_info)
 
         return value
 
-    def _get_datetime_value(self, register_info):
+    def _get_datetime_value(self, register_info: dict) -> datetime:
         register_type = register_info["register_type"]
 
-        sec, min, hr, day, mon, year = self._read_register_range(
+        sec, minute, hr, day, mon, year = self._read_register_range(
             register_type, register_info["address"], register_info["data_length"]
         )
-        inverter_datetime = f"{year:02}-{mon:02}-{day:02} {hr:02}:{min:02}:{sec:02}"
+        inverter_datetime = f"{year:02}-{mon:02}-{day:02} {hr:02}:{minute:02}:{sec:02}"
         value = datetime.strptime(inverter_datetime, "%y-%m-%d %H:%M:%S")
         return value
 
-    def _is_register_type_datetime(self, register_info):
+    def _is_register_type_datetime(self, register_info: dict) -> bool:
         return "datetime" in register_info["data_format"]
 
-    def _get_string_value(self, register_info):
+    def _get_string_value(self, register_info: dict) -> str:
+        characters = []
         register_type = register_info["register_type"]
-
         block = self._read_register_range(
             register_type, register_info["address"], register_info["data_length"]
         )
-        sn = []
+
         for i in range(register_info["data_length"]):
             first_byte, second_byte = unpack("BB", int.to_bytes(block[i], 2, "little"))
             if not second_byte == 0x0:
-                sn.append(chr(second_byte))
+                characters.append(chr(second_byte))
             if not first_byte == 0x0:
-                sn.append(chr(first_byte))
+                characters.append(chr(first_byte))
 
-        return "".join(sn)
+        return "".join(characters)
 
-    def _is_register_type_string(self, register_info):
+    def _is_register_type_string(self, register_info: dict) -> bool:
         return "varchar" in register_info["data_format"]
 
-    def _get_integer_value(self, register_info):
+    def _get_integer_value(self, register_info: dict) -> int:
         register_type = register_info["register_type"]
+        val = 0
 
         if register_info["data_length"] == 1:
             val = self._get_unsigned_16(register_type, register_info["address"])
@@ -131,10 +134,10 @@ class SolaxX3:
             val = twos_complement(val, register_info["data_length"] * 16)
         return val
 
-    def is_register_type_integer(self, register_info: dict) -> bool:
+    def _is_register_type_integer(self, register_info: dict) -> bool:
         return "int" in register_info["data_format"]
 
-    def read_register_value(self, register_info: dict) -> tuple:
+    def _read_register_value(self, register_info: dict) -> tuple:
         """Read the values from a register based on length and sign.
 
         Parameters:
@@ -145,41 +148,42 @@ class SolaxX3:
         val = self._read_format_register_value(register_info)
         return (val, register_info["data_unit"])
 
-    def read(self, name: str):
+    def read(self, name: str) -> Any:
         """Retrieve the value for the register with the provided name"""
 
         registers = SolaxRegistersInfo()
-
         register_info = registers.get_register_info(name)
-        value_data_unit = self.read_register_value(register_info)
-
+        value_data_unit = self._read_register_value(register_info)
         return value_data_unit
 
     def list_register_names(self):
+        """Return all registers defined in register info."""
+
         r = SolaxRegistersInfo()
         return r.list_register_names()
 
     def read_all_registers(self) -> None:
+        """Read all register values from inverter."""
+
         self._input_registers_values = []
         self._holding_registers_values = []
 
-        READ_BLOCK_LENGTH = 100
-        self._read_input_registers(READ_BLOCK_LENGTH)
-        self._read_holding_registers(READ_BLOCK_LENGTH)
+        self._read_input_registers()
+        self._read_holding_registers()
 
-    def _read_holding_registers(self, READ_BLOCK_LENGTH):
+    def _read_holding_registers(self):
         for count in range(4):
-            address = count * READ_BLOCK_LENGTH
+            address = count * self.READ_BLOCK_LENGTH
             values = self.client.read_holding_registers(
-                address=address, count=READ_BLOCK_LENGTH, slave=1
+                address=address, count=self.READ_BLOCK_LENGTH, slave=1
             ).registers
             self._holding_registers_values.extend(values)
 
-    def _read_input_registers(self, READ_BLOCK_LENGTH):
+    def _read_input_registers(self):
         for count in range(4):
-            address = count * READ_BLOCK_LENGTH
+            address = count * self.READ_BLOCK_LENGTH
 
             values = self.client.read_input_registers(
-                address=address, count=READ_BLOCK_LENGTH, slave=1
+                address=address, count=self.READ_BLOCK_LENGTH, slave=1
             ).registers
             self._input_registers_values.extend(values)

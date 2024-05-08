@@ -1,4 +1,9 @@
+"""Module holding information about inverter's registers."""
+
+
 class SolaxRegistersInfo:
+    """Class holding information about inverter's registers."""
+
     _registers = {
         # input registers
         "grid_voltage": {
@@ -1289,7 +1294,11 @@ class SolaxRegistersInfo:
             "signed": False,
             "data_unit": "N/A",
             "data_length": 1,
-            "description": "Modbus Power Control: 0:disable remote contro, 1:enable power control, 2:enable electric quality control, 3:enable SOC target control",
+            "description": """Modbus Power Control
+                0:disable remote contro
+                1:enable power control
+                2:enable electric quality control
+                3:enable SOC target control""",
         },
         "target_finish_tag": {
             "address": 0x0101,
@@ -3525,15 +3534,23 @@ class SolaxRegistersInfo:
     }
 
     def get_register_info(self, name: str):
+        """Get the information about a register."""
+
         return self._registers[name]
 
     def list_register_names(self):
+        """Return all registers defined in this class."""
+
         return list(self._registers.keys())
 
     def list_holding_registers(self):
+        """Return all holding registers defined in this class."""
+
         f = lambda register: self._registers[register]["register_type"] == "holding"
         return list(filter(f, self._registers))
 
     def list_input_registers(self):
+        """Return all input registers defined in this class."""
+
         f = lambda register: self._registers[register]["register_type"] == "input"
         return list(filter(f, self._registers))
