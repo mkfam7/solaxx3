@@ -31,8 +31,8 @@ Test scenarios:
 import re
 import sys
 import unittest
-from pathlib import Path
 from itertools import filterfalse
+from pathlib import Path
 
 from src.solaxx3.solax_registers_info import SolaxRegistersInfo
 
@@ -44,12 +44,14 @@ REGISTER_FILE = "src/solaxx3/solax_registers_info.py"
 
 
 class RegisterTests(unittest.TestCase):
+    """Tests for SolaxRegistersInfo."""
+
     registers = SolaxRegistersInfo._registers
 
     def test_tc1_valid_dictionary(self):
         """Prints an error if `registers` is a dictionary."""
 
-        self.assertIsInstance(SolaxRegistersInfo._registers, dict)
+        self.assertIsInstance(self.registers, dict)
 
     def test_tc2_duplicate_keys(self):
         """Prints an error if 'registers' has any duplicate keys."""
@@ -61,7 +63,7 @@ class RegisterTests(unittest.TestCase):
         """
         regex = re.compile(PATTERN, re.VERBOSE)
 
-        with open(REGISTER_FILE, "r") as dictionary:
+        with open(REGISTER_FILE, "r", encoding="utf-8") as dictionary:
             list_keys = []
 
             for line_number, line in filterfalse(
@@ -90,32 +92,31 @@ class RegisterTests(unittest.TestCase):
             "signed",
         ]
 
-        for x in self.registers:
+        for register, register_value in self.registers.items():
             self.assertListEqual(
-                sorted(list(self.registers[x].keys())), VALID_SUBKEYS, f"dict={x!r}"
+                sorted(list(register_value.keys())), VALID_SUBKEYS, f"dict={register!r}"
             )
 
     def test_tc5_correctly_unsigned(self):
         """Prints an error if subkey `data_format` starts with `uint` but `signed` is
         different than False."""
 
-        for register_name in self.registers:
-            info = self.registers[register_name]
-
+        for register, register_value in self.registers.items():
             self.assertFalse(
-                info["data_format"].startswith("uint") and info["signed"] != False,
-                f"not correctly signed: dict='{register_name}'",
+                register_value["data_format"].startswith("uint")
+                and register_value["signed"] is not False,
+                f"not correctly signed: dict='{register}'",
             )
 
     def test_tc6_correctly_signed(self):
         """Prints an error if subkey `data_format` starts with 'int' but `signed`
         is different than True."""
 
-        for registername in self.registers:
-            data = self.registers[registername]
+        for register, register_value in self.registers.items():
             self.assertFalse(
-                data["data_format"].startswith("int") and data["signed"] != True,
-                f"not correctly signed: dict='{registername}'",
+                register_value["data_format"].startswith("int")
+                and register_value["signed"] is not True,
+                f"not correctly signed: dict='{register}'",
             )
 
     def test_tc7_correct_data_length(self):
@@ -124,14 +125,13 @@ class RegisterTests(unittest.TestCase):
         PATTERN = r"int(?P<bits>\d+)"
         regex = re.compile(PATTERN)
 
-        for registername in self.registers:
-            info = self.registers[registername]
-            match = regex.search(info["data_format"])
+        for register, register_value in self.registers.items():
+            match = regex.search(register_value["data_format"])
 
             if match:
                 bits = int(match.group("bits"))
                 self.assertEqual(
-                    bits / 16, info["data_length"], f"dict={registername!r}"
+                    bits / 16, register_value["data_length"], f"dict={register!r}"
                 )
 
     def test_tc8_correct_data_unit_value(self):
@@ -156,15 +156,16 @@ class RegisterTests(unittest.TestCase):
             "second",
         )
 
-        for register_name in self.registers:
-            info = self.registers[register_name]
+        for register, register_value in self.registers.items():
             self.assertGreater(
-                len(info["data_unit"]), 0, f"empty 'data_unit': dict={register_name!r}"
+                len(register_value["data_unit"]),
+                0,
+                f"empty 'data_unit': dict={register!r}",
             )
             self.assertIn(
-                info["data_unit"],
+                register_value["data_unit"],
                 POSSIBLE_DATA_UNITS,
-                f"invalid data_unit: '{info['data_unit']}'; 'dict='{register_name}'",
+                f"invalid data_unit: '{register_value['data_unit']}'; 'dict='{register}'",
             )
 
     def test_tc9_correct_register_type(self):
@@ -172,58 +173,54 @@ class RegisterTests(unittest.TestCase):
 
         POSSIBLE_REGISTER_TYPES = ("input", "holding")
 
-        for register_name in self.registers:
-            info = self.registers[register_name]
+        for register, register_value in self.registers.items():
             self.assertIn(
-                info["register_type"],
+                register_value["register_type"],
                 POSSIBLE_REGISTER_TYPES,
-                f"dict='{register_name}'",
+                f"dict='{register}'",
             )
 
     def test_tc10_correct_data_unit_with_volt(self):
         """Prints an error if the key contains 'volt' but `data_unit` is differrent
         than 'V'."""
 
-        for register_name in self.registers:
-            info = self.registers[register_name]
+        for register, register_value in self.registers.items():
             self.assertFalse(
-                "volt" in register_name
-                and info["data_unit"] != "V"
-                and "percent" not in register_name
-                and "ratio" not in register_name,
-                f"'data_unit' does not match name: dict={register_name!r}",
+                "volt" in register
+                and register_value["data_unit"] != "V"
+                and "percent" not in register
+                and "ratio" not in register,
+                f"'data_unit' does not match name: dict={register!r}",
             )
 
     def test_tc11_correct_data_unit_with_current(self):
         """Prints an error if the key contains 'current' but `data_unit` is
         differrent than 'A'."""
 
-        for register_name in self.registers:
-            info = self.registers[register_name]
+        for register, register_value in self.registers.items():
             self.assertFalse(
-                "current" in register_name and info["data_unit"] != "A",
-                f"'data_unit' does not match name: dict='{register_name}'",
+                "current" in register and register_value["data_unit"] != "A",
+                f"'data_unit' does not match name: dict='{register}'",
             )
 
     def test_tc12_correct_addresses(self):
         """Prints an error if there is any address overlapping."""
 
-        holding_addresses: dict[str, int] = {}
-        input_addresses: dict[str, int] = {}
+        holding_addresses: list = []
+        input_addresses: list = []
 
-        for register_name in self.registers:
-            info = self.registers[register_name]
+        for register, register_value in self.registers.items():
             addresses = (
                 holding_addresses
-                if info["register_type"] == "holding"
+                if register_value["register_type"] == "holding"
                 else input_addresses
             )
-            data_length = info["data_length"]
+            data_length = register_value["data_length"]
 
             for x in range(data_length):
-                address = info["address"] + x
-                self.assertNotIn(address, addresses, f"dict={register_name!r}")
-                addresses[address] = register_name
+                address = register_value["address"] + x
+                self.assertNotIn(address, addresses, f"dict={register!r}")
+                addresses.append(address)
 
     def test_tc13_subkey_duplicates(self):
         """Prints an error if there are any subkey duplicates."""
@@ -236,7 +233,7 @@ class RegisterTests(unittest.TestCase):
 
         regex = re.compile(PATTERN, re.VERBOSE)
 
-        with open(REGISTER_FILE, "r") as dictionary:
+        with open(REGISTER_FILE, "r", encoding="utf-8") as dictionary:
             subkeys = []
 
             for line_number, line in filterfalse(

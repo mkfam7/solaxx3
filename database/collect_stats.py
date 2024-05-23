@@ -1,11 +1,14 @@
-from datetime import datetime, timedelta
-from pymodbus.client import ModbusSerialClient
-from solaxx3.solaxx3 import SolaxX3
+"""Sample program for reading and saving some registers from the inverter."""
+
+from datetime import timedelta
+
 import mysql.connector
+
+from solaxx3.solaxx3 import SolaxX3
 
 s = SolaxX3(port="/dev/ttyUSB0", baudrate=115200)
 
-database_ip = "172.17.7.77"
+DATABASE_IP = "172.17.7.77"
 
 if s.connect():
     s.read_all_registers()
@@ -37,18 +40,18 @@ if s.connect():
     uploadTime = s.read("rtc_datetime")[0]
     uploadDate = uploadTime.date()
 
-    timezone_difference_from_utc = 2
-    uploadTime = uploadTime - timedelta(hours=timezone_difference_from_utc, minutes=0)
+    TIMEZONE_DIFFERENCE_FROM_UTC = 2
+    uploadTime = uploadTime - timedelta(hours=TIMEZONE_DIFFERENCE_FROM_UTC, minutes=0)
 
     # store the stats in the database
     mydb = mysql.connector.connect(
-        host=database_ip, user="root", passwd="rootroot", database="solax"
+        host=DATABASE_IP, user="root", passwd="rootroot", database="solax"
     )
     mycursor = mydb.cursor()
 
     try:
         # create the sql statement
-        sql = """REPLACE INTO solax_local (
+        QUERY = """REPLACE INTO solax_local (
                                       uploadTime,
                                       inverter_status,
                                       dc_solar_power,
@@ -85,23 +88,22 @@ if s.connect():
             power_dc2,
         )
 
-        mycursor.execute(sql, values)
+        mycursor.execute(QUERY, values)
         mydb.commit()
 
         # update daily values
-        sql = """REPLACE INTO solax_daily (
+        QUERY = """REPLACE INTO solax_daily (
                                         uploadDate,
                                         feed_in,
                                         total_yield
             ) VALUES (%s, %s, %s)
             """
         values = (uploadDate, feed_in_today, etoday_togrid)
-        mycursor.execute(sql, values)
+        mycursor.execute(QUERY, values)
         mydb.commit()
 
     except mysql.connector.Error as error:
-        print("parameterized query failed {}".format(error))
+        print(f"parameterized query failed {error}")
 
 else:
     print("Cannot connect to the Modbus Server/Slave")
-    exit()
