@@ -51,7 +51,7 @@ if s.connect():
 
     try:
         # create the sql statement
-        QUERY = """REPLACE INTO solax_local (
+        SQL_QUERY = """REPLACE INTO solax_local (
                                       uploadTime,
                                       inverter_status,
                                       dc_solar_power,
@@ -88,18 +88,18 @@ if s.connect():
             power_dc2,
         )
 
-        mycursor.execute(QUERY, values)
+        mycursor.execute(SQL_QUERY, values)
         mydb.commit()
 
         # update daily values
-        QUERY = """REPLACE INTO solax_daily (
+        SQL_QUERY = """REPLACE INTO solax_daily (
                                         uploadDate,
                                         feed_in,
                                         total_yield
             ) VALUES (%s, %s, %s)
             """
         values = (uploadDate, feed_in_today, etoday_togrid)
-        mycursor.execute(QUERY, values)
+        mycursor.execute(SQL_QUERY, values)
         mydb.commit()
 
     except mysql.connector.Error as error:
