@@ -2,11 +2,11 @@
 
 from datetime import datetime
 from struct import unpack
-from typing import Any, Literal
+from typing import Any, Dict, Iterable, List, Literal, Union
 
 from pymodbus.client import ModbusSerialClient
 
-from .solax_registers_info import SolaxRegistersInfo
+from .solax_registers_info import FIELD_VALUES, FIELDS, SolaxRegistersInfo
 from .utils import join_msb_lsb, twos_complement
 
 
@@ -36,10 +36,10 @@ class SolaxX3:
         stopbits: Literal[0, 1, 2] = 1,
         bytesize: Literal[7, 8] = 8,
     ) -> None:
-        self._input_registers_values = []
-        self._holding_registers_values = []
+        self._input_registers_values: List[int] = []
+        self._holding_registers_values: List[int] = []
 
-        self.client = ModbusSerialClient(
+        self.client: ModbusSerialClient = ModbusSerialClient(
             method=method,
             port=port,
             baudrate=baudrate,
@@ -51,7 +51,7 @@ class SolaxX3:
 
     def connect(self) -> bool:
         """Connect to the inverter and return if it was successful."""
-        self.connected = self.client.connect()
+        self.connected: bool = self.client.connect()
         return self.connected
 
     def _get_unsigned_16(self, value_type: str, address: int) -> int:
@@ -66,7 +66,9 @@ class SolaxX3:
             return self._input_registers_values[address : address + count]
         return self._holding_registers_values[address : address + count]
 
-    def _read_format_register_value(self, register_info: dict) -> Any:
+    def _read_format_register_value(
+        self, register_info: Dict[FIELDS, FIELD_VALUES]
+    ) -> Union[float, str, datetime]:
         """Read the values from a register based on length and sign
 
         Parameters:
@@ -85,7 +87,9 @@ class SolaxX3:
 
         return value
 
-    def _get_datetime_value(self, register_info: dict) -> datetime:
+    def _get_datetime_value(
+        self, register_info: Dict[FIELDS, FIELD_VALUES]
+    ) -> datetime:
         register_type = register_info["register_type"]
 
         sec, minute, hr, day, mon, year = self._read_register_range(
@@ -95,12 +99,14 @@ class SolaxX3:
         value = datetime.strptime(inverter_datetime, "%y-%m-%d %H:%M:%S")
         return value
 
-    def _is_register_type_datetime(self, register_info: dict) -> bool:
+    def _is_register_type_datetime(
+        self, register_info: Dict[FIELDS, FIELD_VALUES]
+    ) -> bool:
         return "datetime" in register_info["data_format"]
 
-    def _get_string_value(self, register_info: dict) -> str:
-        characters = []
-        register_type = register_info["register_type"]
+    def _get_string_value(self, register_info: Dict[FIELDS, FIELD_VALUES]) -> str:
+        characters: List[str] = []
+        register_type: Literal["input", "holding"] = register_info["register_type"]
         block = self._read_register_range(
             register_type, register_info["address"], register_info["data_length"]
         )
@@ -114,10 +120,12 @@ class SolaxX3:
 
         return "".join(characters)
 
-    def _is_register_type_string(self, register_info: dict) -> bool:
+    def _is_register_type_string(
+        self, register_info: Dict[FIELDS, FIELD_VALUES]
+    ) -> bool:
         return "varchar" in register_info["data_format"]
 
-    def _get_integer_value(self, register_info: dict) -> int:
+    def _get_integer_value(self, register_info: Dict[FIELDS, FIELD_VALUES]) -> int:
         register_type = register_info["register_type"]
         val = 0
 
@@ -134,10 +142,14 @@ class SolaxX3:
             val = twos_complement(val, register_info["data_length"] * 16)
         return val
 
-    def _is_register_type_integer(self, register_info: dict) -> bool:
+    def _is_register_type_integer(
+        self, register_info: Dict[FIELDS, FIELD_VALUES]
+    ) -> bool:
         return "int" in register_info["data_format"]
 
-    def _read_register_value(self, register_info: dict) -> tuple:
+    def _read_register_value(
+        self, register_info: Dict[FIELDS, FIELD_VALUES]
+    ) -> tuple[Union[float, str, datetime], str]:
         """Read the values from a register based on length and sign.
 
         Parameters:
@@ -148,7 +160,7 @@ class SolaxX3:
         val = self._read_format_register_value(register_info)
         return (val, register_info["data_unit"])
 
-    def read(self, name: str) -> Any:
+    def read(self, name: str) -> tuple[Union[float, str, datetime], str]:
         """Retrieve the value for the register with the provided name"""
 
         registers = SolaxRegistersInfo()
@@ -156,7 +168,7 @@ class SolaxX3:
         value_data_unit = self._read_register_value(register_info)
         return value_data_unit
 
-    def list_register_names(self):
+    def list_register_names(self) -> list:
         """Return all registers defined in register info."""
 
         r = SolaxRegistersInfo()
@@ -165,25 +177,26 @@ class SolaxX3:
     def read_all_registers(self) -> None:
         """Read all register values from inverter."""
 
-        self._input_registers_values = []
-        self._holding_registers_values = []
+        self._input_registers_values: List[int] = []
+        self._holding_registers_values: List[int] = []
 
         self._read_input_registers()
         self._read_holding_registers()
 
     def _read_holding_registers(self):
         for count in range(4):
-            address = count * self.READ_BLOCK_LENGTH
-            values = self.client.read_holding_registers(
+            address: int = count * self.READ_BLOCK_LENGTH
+
+            values: Iterable = self.client.read_holding_registers(
                 address=address, count=self.READ_BLOCK_LENGTH, slave=1
             ).registers
             self._holding_registers_values.extend(values)
 
     def _read_input_registers(self):
         for count in range(4):
-            address = count * self.READ_BLOCK_LENGTH
+            address: int = count * self.READ_BLOCK_LENGTH
 
-            values = self.client.read_input_registers(
+            values: Iterable = self.client.read_input_registers(
                 address=address, count=self.READ_BLOCK_LENGTH, slave=1
             ).registers
             self._input_registers_values.extend(values)
