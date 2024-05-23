@@ -51,6 +51,7 @@ class SolaxX3:
 
     def connect(self) -> bool:
         """Connect to the inverter and return if it was successful."""
+
         self.connected: bool = self.client.connect()
         return self.connected
 
