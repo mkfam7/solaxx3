@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from struct import unpack
-from typing import Any, Dict, Iterable, List, Literal, Union
+from typing import Any, Dict, Iterable, List, Literal, Tuple, Union
 
 from pymodbus.client import ModbusSerialClient
 
@@ -150,7 +150,7 @@ class SolaxX3:
 
     def _read_register_value(
         self, register_info: Dict[FIELDS, FIELD_VALUES]
-    ) -> tuple[Union[float, str, datetime], str]:
+    ) -> Tuple[Union[float, str, datetime], str]:
         """Read the values from a register based on length and sign.
 
         Parameters:
@@ -161,7 +161,7 @@ class SolaxX3:
         val = self._read_format_register_value(register_info)
         return (val, register_info["data_unit"])
 
-    def read(self, name: str) -> tuple[Union[float, str, datetime], str]:
+    def read(self, name: str) -> Tuple[Union[float, str, datetime], str]:
         """Retrieve the value for the register with the provided name"""
 
         registers = SolaxRegistersInfo()
