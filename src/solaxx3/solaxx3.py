@@ -2,12 +2,15 @@
 
 from datetime import datetime
 from struct import unpack
-from typing import Any, Dict, Iterable, List, Literal, Tuple, Union
+from typing import Dict, Iterable, List, Literal, Tuple, Union
 
 from pymodbus.client import ModbusSerialClient
 
 from .solax_registers_info import FIELD_VALUES, FIELDS, SolaxRegistersInfo
 from .utils import join_msb_lsb, twos_complement
+
+REGISTER_VALUE = Union[float, str, datetime]
+REGISTER_INFO = Dict[FIELDS, FIELD_VALUES]
 
 
 class SolaxX3:
@@ -68,8 +71,8 @@ class SolaxX3:
         return self._holding_registers_values[address : address + count]
 
     def _read_format_register_value(
-        self, register_info: Dict[FIELDS, FIELD_VALUES]
-    ) -> Union[float, str, datetime]:
+        self, register_info: REGISTER_INFO
+    ) -> REGISTER_VALUE:
         """Read the values from a register based on length and sign
 
         Parameters:
@@ -88,9 +91,7 @@ class SolaxX3:
 
         return value
 
-    def _get_datetime_value(
-        self, register_info: Dict[FIELDS, FIELD_VALUES]
-    ) -> datetime:
+    def _get_datetime_value(self, register_info: REGISTER_INFO) -> datetime:
         register_type = register_info["register_type"]
 
         sec, minute, hr, day, mon, year = self._read_register_range(
@@ -100,12 +101,10 @@ class SolaxX3:
         value = datetime.strptime(inverter_datetime, "%y-%m-%d %H:%M:%S")
         return value
 
-    def _is_register_type_datetime(
-        self, register_info: Dict[FIELDS, FIELD_VALUES]
-    ) -> bool:
+    def _is_register_type_datetime(self, register_info: REGISTER_INFO) -> bool:
         return "datetime" in register_info["data_format"]
 
-    def _get_string_value(self, register_info: Dict[FIELDS, FIELD_VALUES]) -> str:
+    def _get_string_value(self, register_info: REGISTER_INFO) -> str:
         characters: List[str] = []
         register_type: Literal["input", "holding"] = register_info["register_type"]
         block = self._read_register_range(
@@ -121,12 +120,10 @@ class SolaxX3:
 
         return "".join(characters)
 
-    def _is_register_type_string(
-        self, register_info: Dict[FIELDS, FIELD_VALUES]
-    ) -> bool:
+    def _is_register_type_string(self, register_info: REGISTER_INFO) -> bool:
         return "varchar" in register_info["data_format"]
 
-    def _get_integer_value(self, register_info: Dict[FIELDS, FIELD_VALUES]) -> int:
+    def _get_integer_value(self, register_info: REGISTER_INFO) -> int:
         register_type = register_info["register_type"]
         val = 0
 
@@ -143,14 +140,12 @@ class SolaxX3:
             val = twos_complement(val, register_info["data_length"] * 16)
         return val
 
-    def _is_register_type_integer(
-        self, register_info: Dict[FIELDS, FIELD_VALUES]
-    ) -> bool:
+    def _is_register_type_integer(self, register_info: REGISTER_INFO) -> bool:
         return "int" in register_info["data_format"]
 
     def _read_register_value(
-        self, register_info: Dict[FIELDS, FIELD_VALUES]
-    ) -> Tuple[Union[float, str, datetime], str]:
+        self, register_info: REGISTER_INFO
+    ) -> Tuple[REGISTER_VALUE, str]:
         """Read the values from a register based on length and sign.
 
         Parameters:
@@ -161,7 +156,7 @@ class SolaxX3:
         val = self._read_format_register_value(register_info)
         return (val, register_info["data_unit"])
 
-    def read(self, name: str) -> Tuple[Union[float, str, datetime], str]:
+    def read(self, name: str) -> Tuple[REGISTER_VALUE, str]:
         """Retrieve the value for the register with the provided name"""
 
         registers = SolaxRegistersInfo()
