@@ -1,11 +1,12 @@
-from typing import Any
+from typing import Any, Dict, List, Tuple
+
 import mysql.connector
 
 from .data_source_db import DataSourceDb
 
 
 class MySQLDataSource(DataSourceDb):
-    def __init__(self, mysql_connection_info: dict[str, str]) -> None:
+    def __init__(self, mysql_connection_info: Dict[str, str]) -> None:
         self.user = mysql_connection_info["user"]
         self.host = mysql_connection_info["host"]
         self.password = mysql_connection_info["password"]
@@ -14,7 +15,7 @@ class MySQLDataSource(DataSourceDb):
         self,
         database: str,
         tablename: str,
-        data: dict[str, Any],
+        data: Dict[str, Any],
         use_obj_connection: bool = False,
         close_obj_connection: bool = True,
     ):
@@ -49,7 +50,7 @@ class MySQLDataSource(DataSourceDb):
                 db.close()
                 raise
 
-    def bulk_save(self, export_data: list[dict[str, Any]]) -> None:
+    def bulk_save(self, export_data: List[Dict[str, Any]]) -> None:
         for index, unit in enumerate(export_data):
             database, table_name, data = unit.values()
 
@@ -74,7 +75,7 @@ class MySQLDataSource(DataSourceDb):
                 database, table_name, data, True, index + 1 == len(export_data)
             )
 
-    def create_query(self, table_name: str, data: dict) -> tuple[str, list]:
+    def create_query(self, table_name: str, data: dict) -> Tuple[str, list]:
         columns = list(data.keys())
         values = list(data.values())
 
