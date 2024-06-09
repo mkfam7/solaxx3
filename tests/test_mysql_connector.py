@@ -1,11 +1,15 @@
 import sys
+from os import environ
 from pathlib import Path
 from unittest import TestCase
 
 from tests.mock_packages.mysql.connection import Connection
 from tests.mock_packages.mysql.cursor import Cursor
-from tests.mock_packages.mysql.error import Error
 
+environ["MYSQL_DB_USERNAME"] = ""
+environ["MYSQL_DB_HOST_IP"] = ""
+environ["MYSQL_DB_PASSWORD"] = ""
+environ["MYSQL_DB_DATABASE"] = ""
 current: Path = Path().resolve()
 paths_to_extend = [current / "tests" / "mock_packages", current / "src"]
 for path in paths_to_extend:
