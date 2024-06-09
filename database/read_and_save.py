@@ -2,6 +2,7 @@
 
 import sys
 from datetime import datetime, timedelta
+from os import environ
 
 from solaxx3.solaxx3 import SolaxX3
 
@@ -13,10 +14,11 @@ def _get_datetime(inverter_time: datetime) -> datetime:
 
 
 MYSQL_CONNECTION_INFO = {
-    "user": "USERNAME",
-    "host": "HOST_IP",
-    "password": "PASSWORD",
+    "user": environ["MYSQL_DB_USERNAME"],
+    "host": environ["MYSQL_DB_HOST_IP"],
+    "password": environ["MYSQL_DB_PASSWORD"],
 }
+DATABASE = environ["MYSQL_DB_DATABASE"]
 TIMEZONE_OFFSET = 2
 
 s = SolaxX3(port="/dev/ttyUSB0", baudrate=115200)
@@ -28,7 +30,7 @@ s.read_all_registers()
 
 mysql_export_data = [
     {
-        "database": "camp",
+        "database": DATABASE,
         "table": "solax_local",
         "data": {
             "uploadTime": _get_datetime(s.read("rtc_datetime")[0]),
@@ -58,7 +60,7 @@ mysql_export_data = [
         },
     },
     {
-        "database": "camp",
+        "database": DATABASE,
         "table": "solax_daily",
         "data": {
             "uploadDate": _get_datetime(s.read("rtc_datetime")[0]).date(),
