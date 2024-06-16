@@ -1,3 +1,5 @@
+"""Sample program for reading and saving some inverter register values."""
+
 from solaxx3.solaxx3 import SolaxX3
 
 # adjust the serial port and baud rate as necessary
@@ -16,4 +18,3 @@ if s.connect():
 
 else:
     print("Cannot connect to the Modbus Server/Slave")
-    exit()

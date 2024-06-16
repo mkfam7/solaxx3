@@ -1,5 +1,24 @@
+"""Module holding information about inverter's registers."""
+
+from typing import Dict, Union, Literal
+
+FIELDS = Literal[
+    "address",
+    "register_type",
+    "data_format",
+    "si_adj",
+    "signed",
+    "data_unit",
+    "data_length",
+    "description",
+]
+FIELD_VALUES = Union[int, str]
+
+
 class SolaxRegistersInfo:
-    _registers = {
+    """Class holding information about inverter's registers."""
+
+    _registers: Dict[str, Dict[FIELDS, FIELD_VALUES]] = {
         # input registers
         "grid_voltage": {
             "address": 0x0000,
@@ -1289,7 +1308,11 @@ class SolaxRegistersInfo:
             "signed": False,
             "data_unit": "N/A",
             "data_length": 1,
-            "description": "Modbus Power Control: 0:disable remote contro, 1:enable power control, 2:enable electric quality control, 3:enable SOC target control",
+            "description": """Modbus Power Control
+                0:disable remote contro
+                1:enable power control
+                2:enable electric quality control
+                3:enable SOC target control""",
         },
         "target_finish_tag": {
             "address": 0x0101,
@@ -3524,16 +3547,24 @@ class SolaxRegistersInfo:
         },
     }
 
-    def get_register_info(self, name: str):
+    def get_register_info(self, name: str) -> dict:
+        """Get the information about a register."""
+
         return self._registers[name]
 
-    def list_register_names(self):
+    def list_register_names(self) -> list:
+        """Return all registers defined in this class."""
+
         return list(self._registers.keys())
 
-    def list_holding_registers(self):
+    def list_holding_registers(self) -> list:
+        """Return all holding registers defined in this class."""
+
         f = lambda register: self._registers[register]["register_type"] == "holding"
         return list(filter(f, self._registers))
 
-    def list_input_registers(self):
+    def list_input_registers(self) -> list:
+        """Return all input registers defined in this class."""
+
         f = lambda register: self._registers[register]["register_type"] == "input"
         return list(filter(f, self._registers))

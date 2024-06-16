@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "solaxx3"
-version = "1.0.0"
+version = "1.0.2"
 description = "Read Solax X3 inverter registers via modbus interface (RS-485)"
 readme = "README.md"
 authors = [{ name = "Flavius Moldovan", email = "mkfam@protonmail.com" }]
@@ -15,6 +15,11 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 keywords = ["Solax", "solax-x3", "solaxx3", "solar inverter", "RTU", "MODBUS"]
 dependencies = [

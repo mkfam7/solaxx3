@@ -1,0 +1,33 @@
+[MASTER]
+
+# Specify the maximum line length
+max-line-length = 120
+
+# Specify the output format (default is text)
+output-format = colorized
+
+# Specify additional paths to look for modules
+; init-hook='import sys; sys.path.append("path/to/your/modules")'
+
+# Set the default score threshold for generating a report (0 to disable)
+evaluation = 10.0
+
+[MESSAGES CONTROL]
+
+# Disable certain warnings or errors
+disable =
+    unnecessary-lambda-assignment,
+    import-error,
+# Enable additional checks
+enable =
+    unused-import,         # Enable warnings about unused imports
+    unused-variable,        # Enable warnings about unused variables
+
+; [BASIC]
+
+; # Enforce PEP 8 style conventions
+; pep
+
+[FORMAT]
+
+max-module-lines=4000
