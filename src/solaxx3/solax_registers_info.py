@@ -1,10 +1,24 @@
 """Module holding information about inverter's registers."""
 
+from typing import Dict, Union, Literal
+
+FIELDS = Literal[
+    "address",
+    "register_type",
+    "data_format",
+    "si_adj",
+    "signed",
+    "data_unit",
+    "data_length",
+    "description",
+]
+FIELD_VALUES = Union[int, str]
+
 
 class SolaxRegistersInfo:
     """Class holding information about inverter's registers."""
 
-    _registers = {
+    _registers: Dict[str, Dict[FIELDS, FIELD_VALUES]] = {
         # input registers
         "grid_voltage": {
             "address": 0x0000,
@@ -3533,23 +3547,23 @@ class SolaxRegistersInfo:
         },
     }
 
-    def get_register_info(self, name: str):
+    def get_register_info(self, name: str) -> dict:
         """Get the information about a register."""
 
         return self._registers[name]
 
-    def list_register_names(self):
+    def list_register_names(self) -> list:
         """Return all registers defined in this class."""
 
         return list(self._registers.keys())
 
-    def list_holding_registers(self):
+    def list_holding_registers(self) -> list:
         """Return all holding registers defined in this class."""
 
         f = lambda register: self._registers[register]["register_type"] == "holding"
         return list(filter(f, self._registers))
 
-    def list_input_registers(self):
+    def list_input_registers(self) -> list:
         """Return all input registers defined in this class."""
 
         f = lambda register: self._registers[register]["register_type"] == "input"
