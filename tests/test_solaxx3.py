@@ -11,7 +11,7 @@ from tests.final_result import (
 )
 
 import_path = Path().resolve() / "tests" / "mock_packages"
-if sys.path[-1] != str(import_path):
+if str(import_path) not in sys.path:
     sys.path.append(str(import_path))
 
 
