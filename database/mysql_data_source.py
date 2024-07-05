@@ -6,6 +6,8 @@ from .data_source_db import DataSourceDb
 
 
 class MySQLDataSource(DataSourceDb):
+    """Class for storing and reading SolaxX3 data from a MySQL database."""
+
     def __init__(self, mysql_connection_info: Dict[str, str]) -> None:
         self.user = mysql_connection_info["user"]
         self.host = mysql_connection_info["host"]
@@ -19,7 +21,9 @@ class MySQLDataSource(DataSourceDb):
         use_obj_connection: bool = False,
         close_obj_connection: bool = True,
     ):
-        query, values = self.create_query(tablename, data)
+        """Save a record of data in a table."""
+
+        query, values = self._create_query(tablename, data)
 
         if use_obj_connection:
             try:
@@ -49,6 +53,8 @@ class MySQLDataSource(DataSourceDb):
                 db.close()
 
     def bulk_save(self, export_data: List[Dict[str, Any]]) -> None:
+        """Save multiple rows in different tables, reusing the same connection."""
+
         for index, unit in enumerate(export_data):
             database, table_name, data = unit.values()
 
@@ -66,7 +72,7 @@ class MySQLDataSource(DataSourceDb):
 
             self.save_record(database, table_name, data, True, index + 1 == len(export_data))
 
-    def create_query(self, table_name: str, data: dict) -> Tuple[str, list]:
+    def _create_query(self, table_name: str, data: dict) -> Tuple[str, list]:
         columns = list(data.keys())
         values = list(data.values())
 
