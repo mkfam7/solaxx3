@@ -52,7 +52,11 @@ class MySQLDataSource(DataSourceDb):
         for index, unit in enumerate(export_data):
             database, table_name, data = unit.values()
 
-            if not hasattr(self, "db") or not hasattr(self, "cursor") or not self.db.is_connected():
+            if (
+                not hasattr(self, "db")
+                or not hasattr(self, "cursor")
+                or not self.db.is_connected()
+            ):
                 self.db = mysql.connector.connect(
                     user=self.user,
                     host=self.host,
@@ -65,13 +69,19 @@ class MySQLDataSource(DataSourceDb):
                     self.db.close()
                     raise
 
-            self.save_record(database, table_name, data, True, index + 1 == len(export_data))
+            self.save_record(
+                database, table_name, data, True, index + 1 == len(export_data)
+            )
 
     def create_query(self, table_name: str, data: dict) -> Tuple[str, list]:
         columns = list(data.keys())
         values = list(data.values())
 
         query = (
-            f"REPLACE INTO {table_name} (" + ", ".join(columns) + ") VALUES (" + ", ".join(["%s"] * len(columns)) + ")"
+            f"REPLACE INTO {table_name} ("
+            + ", ".join(columns)
+            + ") VALUES ("
+            + ", ".join(["%s"] * len(columns))
+            + ")"
         )
         return (query, values)
