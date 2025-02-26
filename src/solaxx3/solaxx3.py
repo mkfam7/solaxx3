@@ -17,7 +17,6 @@ class SolaxX3:
     """
     Class interacting with values from the inverter.
     Initialization parameters:
-        - method (default: rtu)
         - port (default: /dev/ttyUSB0 )
         - baudrate: Bits per second (default: 115,200 )
         - timeout: Timeout for a request, in seconds. (default: 3)
@@ -31,7 +30,6 @@ class SolaxX3:
 
     def __init__(
         self,
-        method: str = "rtu",
         port: str = "/dev/ttyUSB0",
         baudrate: int = 115200,
         timeout: int = 3,
@@ -43,7 +41,6 @@ class SolaxX3:
         self._holding_registers_values: List[int] = []
 
         self.client: ModbusSerialClient = ModbusSerialClient(
-            method=method,
             port=port,
             baudrate=baudrate,
             timeout=timeout,

@@ -38,7 +38,7 @@ from src.solaxx3.solax_registers_info import SolaxRegistersInfo
 
 import_path = Path().resolve() / "tests" / "mock_packages"
 if str(import_path) not in sys.path:
-    sys.path.append(str(import_path))
+    sys.path.insert(0, str(import_path))
 
 REGISTER_FILE = "src/solaxx3/solax_registers_info.py"
 

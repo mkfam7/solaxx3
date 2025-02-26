@@ -3,6 +3,7 @@ from typing import Any, Dict, List, Tuple
 import mysql.connector
 
 from .data_source_db import DataSourceDb
+from .utils import connection
 
 
 class MySQLDataSource(DataSourceDb):
@@ -29,26 +30,23 @@ class MySQLDataSource(DataSourceDb):
                     self.db.commit()
                     self.db.close()
 
-            except mysql.connector.Error:
+            except:
                 self.db.commit()
                 self.db.close()
                 raise
 
         else:
-            db = mysql.connector.connect(
+            with connection(
+                module=mysql.connector,
                 user=self.user,
                 host=self.host,
                 password=self.password,
                 database=database,
-            )
-            try:
+                save_on_close=True,
+            ) as db:
                 cursor = db.cursor()
                 cursor.execute(query, values)
                 db.commit()
-                db.close()
-            except mysql.connector.Error:
-                db.close()
-                raise
 
     def bulk_save(self, export_data: List[Dict[str, Any]]) -> None:
         for index, unit in enumerate(export_data):
