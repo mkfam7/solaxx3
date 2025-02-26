@@ -15,7 +15,7 @@ paths_to_extend = [current / "tests" / "mock_packages", current / "src"]
 for path in paths_to_extend:
     path_as_string = str(path)
     if path_as_string not in sys.path:
-        sys.path.append(path_as_string)
+        sys.path.insert(0, path_as_string)
 
 from database import read_and_save
 
