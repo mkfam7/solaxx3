@@ -1,7 +1,5 @@
-# pyproject.toml
-
 [build-system]
-requires      = ["setuptools>=61.0.0", "wheel"]
+requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,10 +7,15 @@ name = "solaxx3"
 version = "1.0.3"
 description = "Read Solax X3 inverter registers via modbus interface (RS-485)"
 readme = "README.md"
-authors = [{ name = "Flavius Moldovan", email = "mkfam@protonmail.com" }]
-license = { file = "LICENSE" }
+authors = [
+    { name = "Flavius Moldovan", email = "mkfam@protonmail.com" },
+    { name = "Philip Moldovan", email = "phdfam@protonmail.com" },
+]
+license = "MIT"
+license-files = ["LICENSE"]
 classifiers = [
     "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
@@ -29,3 +32,4 @@ requires-python = ">=3.8"
 
 [project.urls]
 Homepage = "https://github.com/mkfam7/solaxx3"
+Issues = "https://github.com/mkfam7/solaxx3/issues"
