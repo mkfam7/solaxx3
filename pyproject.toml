@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "solaxx3"
-version = "1.0.4"
+version = "1.0.5"
 description = "Read Solax X3 inverter registers via modbus interface (RS-485)"
 readme = "README.md"
 authors = [
