@@ -178,11 +178,12 @@ class SolaxX3:
         self._read_holding_registers()
 
     def _read_holding_registers(self):
+        extra_params = {self._get_pymodbus_slave_param(): 1}
         for count in range(4):
             address: int = count * self.READ_BLOCK_LENGTH
 
             values: Iterable = self.client.read_holding_registers(
-                address=address, count=self.READ_BLOCK_LENGTH, slave=1
+                address=address, count=self.READ_BLOCK_LENGTH, **extra_params
             ).registers
             self._holding_registers_values.extend(values)
 
