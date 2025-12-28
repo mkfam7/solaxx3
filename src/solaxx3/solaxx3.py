@@ -5,6 +5,7 @@ from struct import unpack
 from typing import Dict, Iterable, List, Literal, Tuple, Union
 
 from pymodbus.client import ModbusSerialClient
+from pymodbus import __version__ as pymodbus_version
 
 from .solax_registers_info import FIELD_VALUES, FIELDS, SolaxRegistersInfo
 from .utils import join_msb_lsb, twos_complement
@@ -177,19 +178,31 @@ class SolaxX3:
         self._read_holding_registers()
 
     def _read_holding_registers(self):
+        extra_params = {self._get_pymodbus_slave_param(): 1}
         for count in range(4):
             address: int = count * self.READ_BLOCK_LENGTH
 
             values: Iterable = self.client.read_holding_registers(
-                address=address, count=self.READ_BLOCK_LENGTH, slave=1
+                address=address, count=self.READ_BLOCK_LENGTH, **extra_params
             ).registers
             self._holding_registers_values.extend(values)
 
     def _read_input_registers(self):
+        extra_params = {self._get_pymodbus_slave_param(): 1}
         for count in range(4):
             address: int = count * self.READ_BLOCK_LENGTH
 
             values: Iterable = self.client.read_input_registers(
-                address=address, count=self.READ_BLOCK_LENGTH, slave=1
+                address=address, count=self.READ_BLOCK_LENGTH, **extra_params
             ).registers
             self._input_registers_values.extend(values)
+
+    def _get_pymodbus_slave_param(self):
+        version = self._get_pymodbus_version()
+        if version[:2] == (3, 9):
+            return "slave"
+        return "device_id"
+
+    def _get_pymodbus_version(self):
+        splitted = pymodbus_version.split(".")
+        return tuple(map(int, splitted))
