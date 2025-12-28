@@ -214,7 +214,7 @@ class SolaxRegistersInfo:
             "address": 0x0013,
             "register_type": "input",
             "data_format": "uint16",
-            "si_adj": 1000,
+            "si_adj": 1,
             "signed": False,
             "data_unit": "second",
             "data_length": 1,
