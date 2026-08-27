@@ -1,0 +1,3534 @@
+{
+  "grid_voltage": {
+    "address": 0,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid voltage",
+    "min_value": 80,
+    "max_value": 300
+  },
+  "grid_current": {
+    "address": 1,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Grid current",
+    "min_value": -100,
+    "max_value": 100
+  },
+  "grid_power": {
+    "address": 2,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "Grid power"
+  },
+  "pv_voltage_1": {
+    "address": 3,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "PV Voltage 1",
+    "min_value": 0,
+    "max_value": 600
+  },
+  "pv_voltage_2": {
+    "address": 4,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "PV Voltage 2",
+    "min_value": 0,
+    "max_value": 600
+  },
+  "pv_current_1": {
+    "address": 5,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "PV Current 1"
+  },
+  "pv_current_2": {
+    "address": 6,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "PV Current 2"
+  },
+  "grid_frequency": {
+    "address": 7,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Grid frequency",
+    "min_value": 45,
+    "max_value": 65
+  },
+  "radiator_temperature": {
+    "address": 8,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "C",
+    "data_length": 1,
+    "description": "Radiator temperature",
+    "min_value": -40,
+    "max_value": 120
+  },
+  "run_mode": {
+    "address": 9,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Inverter status"
+  },
+  "power_dc1": {
+    "address": 10,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "DC Power String 1"
+  },
+  "power_dc2": {
+    "address": 11,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "DC Power String 2"
+  },
+  "temperature_fault_value": {
+    "address": 12,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "C",
+    "data_length": 1,
+    "description": "Temperature fault value"
+  },
+  "pv1_volt_fault_value": {
+    "address": 13,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "PV1 volt fault value"
+  },
+  "pv2_volt_fault_value": {
+    "address": 14,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "PV2 volt fault value"
+  },
+  "gfci_fault_value": {
+    "address": 15,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "GFCI fault value"
+  },
+  "grid_fault_value": {
+    "address": 16,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid fault value"
+  },
+  "grid_freq_fault_value_t": {
+    "address": 17,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Grid frequency fault value t"
+  },
+  "dci_fault_value": {
+    "address": 18,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "DCI fault value"
+  },
+  "time_count_down": {
+    "address": 19,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "Time remaining until the current operation finishes (e.g. checking)"
+  },
+  "battery_voltage_charge_1": {
+    "address": 20,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Battery voltage charge 1"
+  },
+  "battery_current_charge_1": {
+    "address": 21,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Battery current charge 1"
+  },
+  "battery_power_charge1": {
+    "address": 22,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "Battery power charge 1"
+  },
+  "bms_connect_state": {
+    "address": 23,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "BMS connect state"
+  },
+  "temperature_battery": {
+    "address": 24,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "C",
+    "data_length": 1,
+    "description": "Temperature of the battery"
+  },
+  "bdc_status": {
+    "address": 25,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "BDC Status"
+  },
+  "grid_status": {
+    "address": 26,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Grid Status: 0-OnGrid, 1-OffGrid"
+  },
+  "mppt_count": {
+    "address": 27,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "MPPT Count"
+  },
+  "battery_capacity": {
+    "address": 28,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "Battery charge percentage"
+  },
+  "output_energy_charge": {
+    "address": 29,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Output energy charge"
+  },
+  "output_energy_charge_today": {
+    "address": 32,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 1,
+    "description": "Output energy charge today"
+  },
+  "input_energy_charge": {
+    "address": 33,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Input energy charge"
+  },
+  "input_energy_charge_today": {
+    "address": 35,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 1,
+    "description": "Input energy charge today"
+  },
+  "bms_charge_max_current": {
+    "address": 36,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "BMS charge max current"
+  },
+  "bms_discharge_max_current": {
+    "address": 37,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "BMS discharge max current"
+  },
+  "bms_battery_capacity": {
+    "address": 38,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "Wh",
+    "data_length": 2,
+    "description": "BMS Battery Capacity"
+  },
+  "pcs_major_fault": {
+    "address": 62,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "PCS Major Fault"
+  },
+  "battery_major_fault": {
+    "address": 63,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Battery Major Fault"
+  },
+  "inv_fault_message": {
+    "address": 64,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 2,
+    "description": "Inverter Fault Message: X1:Table 2-4, X2:Table 2-3"
+  },
+  "mgr_fault_message": {
+    "address": 67,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Manager Fault Message: Table 2-5"
+  },
+  "bat_bms_fault_message": {
+    "address": 68,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 2,
+    "description": "Battery BMS Fault Message - Table 2-6"
+  },
+  "feed_in_power": {
+    "address": 70,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Feed-in power obtained from Meter or CT"
+  },
+  "energy_to_grid_meter": {
+    "address": 72,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Energy to grid meter value"
+  },
+  "energy_from_grid_meter": {
+    "address": 74,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Energy from grid meter value"
+  },
+  "off_grid_voltage": {
+    "address": 76,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Off-Grid Voltage X1"
+  },
+  "off_grid_current": {
+    "address": 77,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Off-Grid Current X1"
+  },
+  "off_grid_power": {
+    "address": 78,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "VA",
+    "data_length": 1,
+    "description": "Off Grid Power X1"
+  },
+  "off_grid_frequency_input_reg": {
+    "address": 79,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Off-Grid Frequency"
+  },
+  "energy_to_grid_today": {
+    "address": 80,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 1,
+    "description": "The quantity of energy sent to grid today"
+  },
+  "energy_to_grid_total": {
+    "address": 82,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Total energy sent to grid"
+  },
+  "lock_state": {
+    "address": 84,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Lock State"
+  },
+  "bus_volt": {
+    "address": 102,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Bus Volt"
+  },
+  "w_dcv_fault_val": {
+    "address": 103,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "W DCV Fault Value"
+  },
+  "w_overload_fault_val": {
+    "address": 104,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "W Overload Fault Value"
+  },
+  "w_battery_volt_fault_val": {
+    "address": 105,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "W Battery Volt Fault Value"
+  },
+  "grid_voltage_r": {
+    "address": 106,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid voltage for R phase"
+  },
+  "grid_current_r": {
+    "address": 107,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Grid Current R Phase"
+  },
+  "grid_power_r": {
+    "address": 108,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "Grid Power R Phase"
+  },
+  "grid_frequency_r": {
+    "address": 109,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Grid Frequency R Phase"
+  },
+  "grid_voltage_s": {
+    "address": 110,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid voltage for S phase"
+  },
+  "grid_current_s": {
+    "address": 111,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Grid Current S Phase"
+  },
+  "grid_power_s": {
+    "address": 112,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "Grid Power S Phase"
+  },
+  "grid_frequency_s": {
+    "address": 113,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Grid Frequency S"
+  },
+  "grid_voltage_t": {
+    "address": 114,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid voltage for T phase"
+  },
+  "grid_current_t": {
+    "address": 115,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Grid Current T Phase"
+  },
+  "grid_power_t": {
+    "address": 116,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "Grid Power T Phase"
+  },
+  "grid_frequency_t": {
+    "address": 117,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Grid Frequency T Phase"
+  },
+  "off_grid_volt_r": {
+    "address": 118,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Off-Grid Volt R Phase"
+  },
+  "off_grid_current_r": {
+    "address": 119,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Off-Grid Current R Phase"
+  },
+  "off_grid_power_active_r": {
+    "address": 120,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "Off-Grid Active Power R Phase"
+  },
+  "off_grid_power_s_r": {
+    "address": 121,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "VA",
+    "data_length": 1,
+    "description": "Off-Grid S Power R Phase"
+  },
+  "off_grid_volt_s": {
+    "address": 122,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Off-Grid Volt S Phase"
+  },
+  "off_grid_current_s": {
+    "address": 123,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Off-Grid Current S Phase"
+  },
+  "off_grid_power_active_s": {
+    "address": 124,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "Off-Grid Active Power S Phase"
+  },
+  "off_grid_power_s_s": {
+    "address": 125,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "VA",
+    "data_length": 1,
+    "description": "Off-Grid S Power S Phase"
+  },
+  "off_grid_volt_t": {
+    "address": 126,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Off-Grid Volt T Phase"
+  },
+  "off_grid_current_t": {
+    "address": 127,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Off-Grid Current T Phase"
+  },
+  "off_grid_power_active_t": {
+    "address": 128,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 1,
+    "description": "Off-Grid Active Power T Phase"
+  },
+  "off_grid_power_s_t": {
+    "address": 129,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "VA",
+    "data_length": 1,
+    "description": "Off-Grid S Power T Phase"
+  },
+  "feedin_power_r_phase": {
+    "address": 130,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Feedin Power R Phase"
+  },
+  "feedin_power_s_phase": {
+    "address": 132,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Feedin Power S Phase"
+  },
+  "feedin_power_t_phase": {
+    "address": 134,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Feedin Power T Phase"
+  },
+  "ongrid_run_time": {
+    "address": 136,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "hour",
+    "data_length": 2,
+    "description": "On-Grid Run Time"
+  },
+  "offgrid_run_time": {
+    "address": 138,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "hour",
+    "data_length": 2,
+    "description": "Off-Grid Run Time"
+  },
+  "offgrid_yield_total": {
+    "address": 142,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Off-Grid Yield Total"
+  },
+  "offgrid_yield_today": {
+    "address": 144,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 1,
+    "description": "Off-Grid Yield Today"
+  },
+  "echarge_today": {
+    "address": 145,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 1,
+    "description": "Echarge energy today"
+  },
+  "echarge_total": {
+    "address": 146,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Echarge Total"
+  },
+  "solar_energy_total": {
+    "address": 148,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Total solar energy"
+  },
+  "solar_energy_today": {
+    "address": 150,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 1,
+    "description": "Solar energy today"
+  },
+  "feed_in_energy_today": {
+    "address": 152,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Energy to grid meter for today"
+  },
+  "consumption_energy_today": {
+    "address": 154,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Energy from grid meter for today"
+  },
+  "inv_volt_r": {
+    "address": 156,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Inverter Volt R Phase"
+  },
+  "inv_volt_s": {
+    "address": 157,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Inverter Volt S Phase"
+  },
+  "inv_volt_t": {
+    "address": 158,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Inverter Volt T Phase"
+  },
+  "feedin_power_meter_2": {
+    "address": 168,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Power to Grid Meter 2"
+  },
+  "feedin_energy_total_meter_2": {
+    "address": 170,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Energy to the grid"
+  },
+  "consum_energy_total_meter_2": {
+    "address": 172,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Energy from grid"
+  },
+  "feedin_energy_today_meter_2": {
+    "address": 174,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Energy to grid"
+  },
+  "consum_energy_today_meter_2": {
+    "address": 176,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "KWh",
+    "data_length": 2,
+    "description": "Energy from grid"
+  },
+  "feedin_power_r_phase_meter_2": {
+    "address": 178,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Feedin Power R Phase Meter 2"
+  },
+  "feedin_power_s_phase_meter_2": {
+    "address": 180,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Feedin Power S Phase Meter 2"
+  },
+  "feedin_power_t_phase_meter_2": {
+    "address": 182,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Feedin Power T Phase Meter 2"
+  },
+  "meter_1_communication_state": {
+    "address": 184,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Meter 1 Communication State: 0:Com Error, 1:Normal"
+  },
+  "meter_2_communication_state": {
+    "address": 185,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Meter 2 Communication State: 0:Com Error, 1:Normal"
+  },
+  "battery_tem_high": {
+    "address": 186,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "C",
+    "data_length": 1,
+    "description": "Battery Temperature High"
+  },
+  "battery_tem_low": {
+    "address": 187,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "C",
+    "data_length": 1,
+    "description": "Battery Temperature Low"
+  },
+  "cell_voltage_high": {
+    "address": 188,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Cell Voltage High"
+  },
+  "cell_voltage_low": {
+    "address": 189,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Cell Voltage Low"
+  },
+  "bms_user_soc": {
+    "address": 190,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "BMS User SOC"
+  },
+  "bms_user_soh": {
+    "address": 191,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "BMS User SOH"
+  },
+  "grid_reactive_power_total_meter": {
+    "address": 192,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 1,
+    "description": "Grid Reactive Power Total Meter"
+  },
+  "grid_reactive_power_r_meter": {
+    "address": 193,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 1,
+    "description": "Grid Reactive Power Phase R Meter"
+  },
+  "grid_reactive_power_s_meter": {
+    "address": 194,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 1,
+    "description": "Grid Reactive Power Phase S Meter"
+  },
+  "grid_reactive_power_t_meter": {
+    "address": 195,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 1,
+    "description": "Grid Reactive Power Phase T Meter"
+  },
+  "grid_power_factor_total_meter": {
+    "address": 196,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 100,
+    "signed": true,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Grid Power Factor Total Meter"
+  },
+  "grid_power_factor_r_meter": {
+    "address": 197,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 100,
+    "signed": true,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Grid Power Factor Phase R Meter"
+  },
+  "grid_power_factor_s_meter": {
+    "address": 198,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 100,
+    "signed": true,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Grid Power Factor Phase S Meter"
+  },
+  "grid_power_factor_t_meter": {
+    "address": 199,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 100,
+    "signed": true,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Grid Power Factor Phase T Meter"
+  },
+  "grid_frequency_meter": {
+    "address": 200,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Grid Frequency Meter"
+  },
+  "grid_voltage_total_meter": {
+    "address": 201,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid Voltage Total Meter"
+  },
+  "grid_voltage_r_meter": {
+    "address": 202,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid Voltage R Meter"
+  },
+  "grid_voltage_s_meter": {
+    "address": 203,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid Voltage S Meter"
+  },
+  "grid_voltage_t_meter": {
+    "address": 204,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid Voltage T Meter"
+  },
+  "grid_current_total_meter": {
+    "address": 205,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Grid Current Total Meter"
+  },
+  "grid_current_r_meter": {
+    "address": 206,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Grid Current R Meter"
+  },
+  "grid_current_s_meter": {
+    "address": 207,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Grid Current S Meter"
+  },
+  "grid_current_t_meter": {
+    "address": 208,
+    "register_type": "input",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "A",
+    "data_length": 1,
+    "description": "Grid Current T Meter"
+  },
+  "modbus_power_control": {
+    "address": 256,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Modbus Power Control\n                0:disable remote contro\n                1:enable power control\n                2:enable electric quality control\n                3:enable SOC target control"
+  },
+  "target_finish_tag": {
+    "address": 257,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Target Finish Tag: 0:unfinished, 1:finished"
+  },
+  "active_power_target": {
+    "address": 258,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Active Power Target"
+  },
+  "w_reactive_power_target": {
+    "address": 260,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 2,
+    "description": "W Reactive Power Target"
+  },
+  "w_active_power_real": {
+    "address": 262,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "W Active Power Real"
+  },
+  "w_reactive_power_real": {
+    "address": 264,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 2,
+    "description": "W Reactive Power Real"
+  },
+  "w_active_power_upper": {
+    "address": 266,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "W Active Power Upper"
+  },
+  "w_active_power_lower": {
+    "address": 268,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "W Active Power Lower"
+  },
+  "w_reactive_power_upper": {
+    "address": 270,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 2,
+    "description": "W Reactive Power Upper"
+  },
+  "w_reactive_power_lower": {
+    "address": 272,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 2,
+    "description": "W Reactive Power Lower"
+  },
+  "target_energy": {
+    "address": 274,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Wh",
+    "data_length": 2,
+    "description": "Target Energy"
+  },
+  "charge_discharge_power": {
+    "address": 276,
+    "register_type": "input",
+    "data_format": "int32",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "W",
+    "data_length": 2,
+    "description": "Charge Discharge Power"
+  },
+  "chargeable_electric_capacity": {
+    "address": 278,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "Wh",
+    "data_length": 2,
+    "description": "Chargeable Electric Capacity"
+  },
+  "dischargeable_electric_capacity": {
+    "address": 280,
+    "register_type": "input",
+    "data_format": "uint32",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "Wh",
+    "data_length": 2,
+    "description": "Dischargeable Electric Capacity"
+  },
+  "time_of_duration": {
+    "address": 282,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "time_of_duration"
+  },
+  "target_soc": {
+    "address": 283,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "Target SOC"
+  },
+  "soc_upper": {
+    "address": 284,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "SOC Upper"
+  },
+  "soc_lower": {
+    "address": 285,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "SOC Lower"
+  },
+  "remote_control_timeout": {
+    "address": 286,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "Remote Control Timeout: 4-65535"
+  },
+  "w_battery_force_charge_flag": {
+    "address": 287,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "W Battery Force Charge Flag: 0:No Action, 1:Force Charge"
+  },
+  "w_bms_relay_state": {
+    "address": 288,
+    "register_type": "input",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "W BMS Relay State: 0:OFF, 1:ON"
+  },
+  "serial_number": {
+    "address": 0,
+    "register_type": "holding",
+    "data_format": "varchar",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 7,
+    "description": "Inverter' serial number"
+  },
+  "factory_name": {
+    "address": 7,
+    "register_type": "holding",
+    "data_format": "varchar",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 7,
+    "description": "Factory name"
+  },
+  "module_name": {
+    "address": 14,
+    "register_type": "holding",
+    "data_format": "varchar",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 7,
+    "description": "Module name"
+  },
+  "start_time": {
+    "address": 22,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "Launch wait time"
+  },
+  "reconnection_time": {
+    "address": 23,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "Reconnection time"
+  },
+  "checking_time": {
+    "address": 24,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "Checking time"
+  },
+  "vac_min_protect": {
+    "address": 25,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Allowed minimum grid voltage"
+  },
+  "vac_max_protect": {
+    "address": 26,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Allowed maximum grid voltage"
+  },
+  "fac_min_protect": {
+    "address": 27,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Allowed minimum grid frequency"
+  },
+  "fac_max_protect": {
+    "address": 28,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Allowed maximum grid frequency"
+  },
+  "safety_code": {
+    "address": 29,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Safety type"
+  },
+  "mate_box_enable": {
+    "address": 30,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "0:Disable 1:Enable"
+  },
+  "grid_10_min_avg_protect": {
+    "address": 31,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "10minutes over voltage protect"
+  },
+  "vac_min_slow_protect": {
+    "address": 32,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid undervoltage protect value"
+  },
+  "vac_max_slow_protect": {
+    "address": 33,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Grid overvoltage protect value"
+  },
+  "fac_min_slow_protect": {
+    "address": 34,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Grid underfrequency protect value"
+  },
+  "fac_max_slow_protect": {
+    "address": 35,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Grid overfrequency protect value"
+  },
+  "power_limits_percent": {
+    "address": 37,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "Output power limits precent"
+  },
+  "powerfactor_mode": {
+    "address": 38,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "0:Off  1:Over Excited  2:Under Excited  3:Curve  4:Qu  5:Fix Q Power"
+  },
+  "powerfactor_data": {
+    "address": 39,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Power factor data"
+  },
+  "power_factor_curve_pf1": {
+    "address": 40,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_PF1"
+  },
+  "power_factor_curve_pf2": {
+    "address": 41,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_PF2"
+  },
+  "power_factor_curve_pf3": {
+    "address": 42,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_PF3"
+  },
+  "power_factor_curve_pf4": {
+    "address": 43,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_PF4"
+  },
+  "power_factor_curve_power1": {
+    "address": 44,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_Power1"
+  },
+  "power_factor_curve_power2": {
+    "address": 45,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_Power2"
+  },
+  "power_factor_curve_power3": {
+    "address": 46,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_Power3"
+  },
+  "power_factor_curve_power4": {
+    "address": 47,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_Power4"
+  },
+  "power_factor_curve_pf_lock_in_point": {
+    "address": 48,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_PfLockInPoint"
+  },
+  "power_factor_curve_pf_lock_out_point": {
+    "address": 49,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_PfLockOutPoint"
+  },
+  "power_factor_curve_3_tau": {
+    "address": 50,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "PowerFactor_Curve_3Tau"
+  },
+  "power_factor_qu_volt_ratio_1": {
+    "address": 51,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_VoltRatio1"
+  },
+  "power_factor_qu_volt_ratio_4": {
+    "address": 52,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_VoltRatio4"
+  },
+  "power_factor_qu_qu_response_v1": {
+    "address": 53,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_QuResponseV1"
+  },
+  "power_factor_qu_qu_response_v2": {
+    "address": 54,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_QuResponseV2"
+  },
+  "power_factor_qu_qu_response_v3": {
+    "address": 55,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_QuResponseV3"
+  },
+  "power_factor_qu_qu_response_v4": {
+    "address": 56,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_QuResponseV4"
+  },
+  "power_factor_qu_k": {
+    "address": 57,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_K"
+  },
+  "power_factor_qu_3_tau": {
+    "address": 58,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_3Tau"
+  },
+  "power_factor_qu_qu_delay_timer": {
+    "address": 59,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_QuDelayTimer"
+  },
+  "power_factor_qu_qu_lock_enable": {
+    "address": 60,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_QuLockEn; 0:Disable  1:Enable"
+  },
+  "power_factor_qu_qu_lock_in": {
+    "address": 61,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_QuLockIn"
+  },
+  "power_factor_qu_qu_lock_out": {
+    "address": 62,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "PowerFactor_Qu_QuLockOut"
+  },
+  "power_factor_fix_q_power": {
+    "address": 63,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 1,
+    "description": "PowerFactor_FixQPower"
+  },
+  "power_factor_fix_q_power_max": {
+    "address": 64,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 1,
+    "description": "PowerFactor_FixQPower_Max"
+  },
+  "power_factor_fix_q_power_min": {
+    "address": 65,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "Var",
+    "data_length": 1,
+    "description": "PowerFactor_FixQPower_Min"
+  },
+  "w_connection_fl": {
+    "address": 66,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 100,
+    "signed": true,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Connection Low frequency"
+  },
+  "w_connection_fh": {
+    "address": 67,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 100,
+    "signed": true,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Connection High frequency"
+  },
+  "w_connection_vl": {
+    "address": 68,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Connection Low voltage"
+  },
+  "w_connection_vh": {
+    "address": 69,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Connection High voltage"
+  },
+  "w_connection_observe_t": {
+    "address": 70,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "Connection Observation time"
+  },
+  "w_connection_gradient_enable": {
+    "address": 71,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Connection Gradient Select"
+  },
+  "w_reconnection_fl": {
+    "address": 72,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 100,
+    "signed": true,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Reconnection Low frequency"
+  },
+  "w_reconnection_fh": {
+    "address": 73,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 100,
+    "signed": true,
+    "data_unit": "Hz",
+    "data_length": 1,
+    "description": "Reconnection High frequency"
+  },
+  "w_reconnection_vl": {
+    "address": 74,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Reconnection Low voltage"
+  },
+  "w_reconnection_vh": {
+    "address": 75,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 10,
+    "signed": true,
+    "data_unit": "V",
+    "data_length": 1,
+    "description": "Reconnection High voltage"
+  },
+  "w_reconnection_observe_t": {
+    "address": 76,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "second",
+    "data_length": 1,
+    "description": "Reconnection Observation time"
+  },
+  "w_reconnection_gradient_enable": {
+    "address": 77,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "N/A",
+    "data_length": 1,
+    "description": "Reconnection Gradient Select"
+  },
+  "w_reconnection_gradient": {
+    "address": 78,
+    "register_type": "holding",
+    "data_format": "int16",
+    "si_adj": 1,
+    "signed": true,
+    "data_unit": "%",
+    "data_length": 1,
+    "description": "Reconnection Gradient"
+  },
+  "firmware_version_dsp_minor": {
+    "address": 125,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Firmware version DSP Minor"
+  },
+  "hardware_version_dsp": {
+    "address": 126,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Hardware version DSP"
+  },
+  "firmware_version_dsp_major": {
+    "address": 127,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Firmware version DSP major"
+  },
+  "firmware_version_arm_major": {
+    "address": 128,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Firmware version ARM major"
+  },
+  "firmware_version_modbus_rtu": {
+    "address": 130,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Firmware version MODBUS RTU"
+  },
+  "firmware_version_arm_minor": {
+    "address": 131,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Firmware version ARM minor"
+  },
+  "firmware_version_arm_bootloader": {
+    "address": 132,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Firmware version ARM Bootloader"
+  },
+  "rtc_datetime": {
+    "address": 133,
+    "register_type": "holding",
+    "data_format": "datetime",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 6,
+    "data_unit": "N/A",
+    "description": "RTC datetime"
+  },
+  "solar_charger_use_mode": {
+    "address": 139,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Solar Charger Use Mode"
+  },
+  "manual_mode": {
+    "address": 140,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Manual Mode"
+  },
+  "w_battery1_type": {
+    "address": 141,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "wBattery1 Type; 0:Lead Acid  1:Lithium"
+  },
+  "charge_float_volt": {
+    "address": 142,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "Lead-acid battery charge_float voltage"
+  },
+  "battery_discharge_cut_voltage": {
+    "address": 143,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "Lead-acid battery discharge cut-off voltage"
+  },
+  "battery_charge_max_current": {
+    "address": 144,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "A",
+    "description": "Lead-acid battery charge maximum current"
+  },
+  "battery_discharge_max_current": {
+    "address": 145,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "A",
+    "description": "Lead-acid battery discharge maximum Current"
+  },
+  "absorpt_voltage": {
+    "address": 146,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "Lead-acid battery absorpt voltage"
+  },
+  "self_use_night_charge_upper_soc": {
+    "address": 148,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "This value will be enabled if SelfUse_NightCharge_Enable is 1."
+  },
+  "set_charge_and_discharge_period_2_enable": {
+    "address": 155,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Whether to use period 2."
+  },
+  "eps_restart_soc": {
+    "address": 160,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Eps restart soc; 10-100"
+  },
+  "hot_standby_enable": {
+    "address": 161,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Hot Standby EN; 0:Disable  1:Enable"
+  },
+  "extend_bms_setting": {
+    "address": 162,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Extend Bms Setting; 0:Disable  1:Enable"
+  },
+  "battery_heating_enable": {
+    "address": 163,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Battery Heating En; 0:Disable  1:Enable"
+  },
+  "w_battery_discharge_backup_voltage": {
+    "address": 168,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "wBattery Discharge Backup Voltage"
+  },
+  "match_resistance_set": {
+    "address": 169,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "(X3) match resistance set; 0:Disable  1:Enable"
+  },
+  "registration_code": {
+    "address": 170,
+    "register_type": "holding",
+    "data_format": "varchar",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 5,
+    "data_unit": "N/A",
+    "description": "Registration code for external module"
+  },
+  "modbus_rtu_address": {
+    "address": 175,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Modbus RTU Address"
+  },
+  "modbus_rtu_braud_rate": {
+    "address": 176,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Modbus RTU braud rate; 0:115200 1:57600 2:56000 3:38400 4:19200 5:14400 6:9600"
+  },
+  "eps_bat_low_auto_recover_voltage": {
+    "address": 177,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "Eps Bat Low Auto Recover Voltage"
+  },
+  "p_grid_bias": {
+    "address": 178,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "P grid Bias: 0:Disable 1:Grid 2:INV"
+  },
+  "factory_limit": {
+    "address": 181,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "W",
+    "description": "Factory limit"
+  },
+  "export_control_user_limit": {
+    "address": 182,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "W",
+    "description": "export control user limit"
+  },
+  "off_grid_mute": {
+    "address": 183,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Off-grid mute: 0(off)/1(on)"
+  },
+  "off_grid_min_soc": {
+    "address": 184,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Off-grid Min SoC"
+  },
+  "off_grid_frequency_holding_reg": {
+    "address": 185,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Off-grid Frequency"
+  },
+  "inverter_power_type": {
+    "address": 186,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "W",
+    "description": "Inverter power type"
+  },
+  "language": {
+    "address": 187,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Language"
+  },
+  "enable_mppt": {
+    "address": 188,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Enable MPPT"
+  },
+  "wtuvp_l2": {
+    "address": 189,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "wTuvp L2"
+  },
+  "wtovp_l2": {
+    "address": 190,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "wTovp L2"
+  },
+  "wtufp_l2": {
+    "address": 191,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "wTufp L2"
+  },
+  "wtofp_l2": {
+    "address": 192,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "wTofp L2"
+  },
+  "wtuvp_l1": {
+    "address": 193,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "wTuvp L1"
+  },
+  "wtovp_l1": {
+    "address": 194,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "wTovp L1"
+  },
+  "wtufp_l1": {
+    "address": 195,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "wTufp L1"
+  },
+  "wtofp_l1": {
+    "address": 196,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "wTofp L1"
+  },
+  "test_step": {
+    "address": 197,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Test Step"
+  },
+  "ovp_value_ovp_59_s2": {
+    "address": 198,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "OvpValue(Ovp(59.S2))"
+  },
+  "ovp_time_ovp_59_s2": {
+    "address": 199,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "OvpTime(Ovp(59.S2))"
+  },
+  "uvp_value_uvp_27_s1": {
+    "address": 200,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "UvpValue(Uvp(27.S1))"
+  },
+  "uvp_time_uvp_27_s1": {
+    "address": 201,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "UvpTime(Uvp(27.S1))"
+  },
+  "ofp_value_ofp_81_s1": {
+    "address": 202,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "OfpValue(Ofp(81>.S1))"
+  },
+  "ofp_time_ofp_81_s1": {
+    "address": 203,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "OfpTime(Ofp(81>.S1))"
+  },
+  "ufp_value_ufp_81_s1": {
+    "address": 204,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "UfpValue(Ufp(81<.S1))"
+  },
+  "ufp_time_ufp_81_s1": {
+    "address": 205,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "UfpTime(Ufp(81<.S1))"
+  },
+  "self_test_ovp_10m_avg_val": {
+    "address": 206,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "Self Test Ovp 10m Avg Val (Ovp_10(59.S1))"
+  },
+  "self_test_ovp_10m_avg_time": {
+    "address": 207,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "Self Test Ovp 10m Avg Time (Ovp_10(59.S1))"
+  },
+  "self_test_ofp_val_restrictive": {
+    "address": 208,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "Self Test Ofp Val Restrictive (Ofp2(81>.S2))"
+  },
+  "self_test_ofp_time_restrictive": {
+    "address": 209,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "Self Test Ofp Time Restrictive (Ofp2(81>.S2))"
+  },
+  "self_test_ufp_val_restrictive": {
+    "address": 210,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "Self Test Ufp Val Restrictive (Ufp2(81<.S2))"
+  },
+  "self_test_ufp_time_restrictive": {
+    "address": 211,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "Self Test Ufp Time Restrictive (Ufp2(81<.S2))"
+  },
+  "self_test_uvp_restrictive_val": {
+    "address": 212,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "Self Test Uvp Restrictive Val (Uvp(27.S2))"
+  },
+  "self_test_uvp_restrictive_time": {
+    "address": 213,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "Self Test Uvp Restrictive Time (Uvp(27.S2))"
+  },
+  "self_test_time": {
+    "address": 214,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "Self Test Time"
+  },
+  "main_breaker_current_limit": {
+    "address": 215,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "A",
+    "description": "Main Breaker Current Limit"
+  },
+  "w_inverter_output_switch": {
+    "address": 218,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "w Inverter OutPut Switch"
+  },
+  "ofpl_point": {
+    "address": 219,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "Overfrequency load reduction point"
+  },
+  "ofpl_set_rate": {
+    "address": 220,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Overfrequency load reduction rate"
+  },
+  "ofpl_delay_time": {
+    "address": 221,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "Overfrequency load reduction delay time"
+  },
+  "ofpl_fstop_disch": {
+    "address": 222,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "OFPL fstop disch"
+  },
+  "ofpl_fpmin": {
+    "address": 223,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "OFPL_fPmin"
+  },
+  "user_password": {
+    "address": 224,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "User password"
+  },
+  "advanced_password": {
+    "address": 225,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Advanced password"
+  },
+  "ufpl_point": {
+    "address": 226,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "Underfrequency load increase point"
+  },
+  "ufpl_set_rate": {
+    "address": 227,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Underfrequency load increase rate"
+  },
+  "ufpl_delay_time": {
+    "address": 228,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "Underfrequency load increase delay time"
+  },
+  "ofpl_curve_type": {
+    "address": 229,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Overfrequency load reduction curve type selection."
+  },
+  "ofpl_tstop": {
+    "address": 230,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "Overfrequency load reduction asymmetry curve stop time"
+  },
+  "ofpl_remove_point": {
+    "address": 231,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "Overfrequency load reduction frequency remove point"
+  },
+  "ufpl_remove_point": {
+    "address": 232,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "Underfrequency load increase frequency remove point"
+  },
+  "export_soft_limit_enable": {
+    "address": 233,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Export Soft Limit En"
+  },
+  "export_hard_limit_enable": {
+    "address": 234,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Export Hard Limit En"
+  },
+  "general_soft_limit_enable": {
+    "address": 235,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "General Soft Limit En"
+  },
+  "general_hard_limit_enable": {
+    "address": 236,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "General Hard Limit En"
+  },
+  "w_ac_power_limit": {
+    "address": 237,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "VA",
+    "description": "w Ac Power Limit"
+  },
+  "connect_slop": {
+    "address": 238,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Connect slop"
+  },
+  "reconnect_slop": {
+    "address": 239,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Reconnect slop"
+  },
+  "hard_export_power": {
+    "address": 240,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "W",
+    "description": "Hard Export Power"
+  },
+  "hard_ac_power_t_limit": {
+    "address": 241,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "VA",
+    "description": "Hard Ac Power t Limit"
+  },
+  "setpoint_timeout": {
+    "address": 242,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "second",
+    "description": "Setpoint Timeout"
+  },
+  "w_power_limit_gra": {
+    "address": 243,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10000,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "w Power Limit Gra"
+  },
+  "pu_func_volt_response_v2": {
+    "address": 244,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "PuFunction Voltage"
+  },
+  "pu_func_volt_response_v3": {
+    "address": 245,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "PuFunction Voltage"
+  },
+  "pu_func_volt_response_v4": {
+    "address": 246,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "Pu Function Voltage"
+  },
+  "pu_func_volt_response_v1": {
+    "address": 247,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "Pu Function Voltage"
+  },
+  "pu_func_3tau": {
+    "address": 248,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Pu Func 3Tau"
+  },
+  "pu_func_enable": {
+    "address": 249,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "PU Func Enable"
+  },
+  "set_pu_power1": {
+    "address": 250,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Set Pu Power1"
+  },
+  "set_pu_power2": {
+    "address": 251,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Set Pu Power2"
+  },
+  "set_pu_power3": {
+    "address": 252,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Set Pu Power3"
+  },
+  "set_pu_power4": {
+    "address": 253,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "Set Pu Power4"
+  },
+  "pu_tpye": {
+    "address": 255,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Pu Tpye"
+  },
+  "ufpl_fstop_ch": {
+    "address": 256,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "UFPL fstop ch"
+  },
+  "ufpl_fpmax": {
+    "address": 257,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 100,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "Hz",
+    "description": "UFPL fPmax"
+  },
+  "drm_function_enable": {
+    "address": 258,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "DRM Function Enable"
+  },
+  "ct_type": {
+    "address": 259,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Ct Type"
+  },
+  "w_shadow_fix_func_enable": {
+    "address": 260,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "w Shadow Fix Func Enable"
+  },
+  "machine_type": {
+    "address": 261,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Machine type: 1:X1, 3:X3"
+  },
+  "phase_power_balance": {
+    "address": 262,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Phase Power Balance"
+  },
+  "w_machine_style": {
+    "address": 263,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "w Machine Style"
+  },
+  "meter_function": {
+    "address": 264,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Meter Function"
+  },
+  "meter1_id": {
+    "address": 265,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Meter1 ID"
+  },
+  "meter2_id": {
+    "address": 266,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Meter2 ID"
+  },
+  "direction_meter_ct_1": {
+    "address": 267,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Direction Meter CT 1"
+  },
+  "direction_meter_2": {
+    "address": 268,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Direction Meter 2"
+  },
+  "external_inv": {
+    "address": 269,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "External Inv"
+  },
+  "input_di_1": {
+    "address": 272,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Input DI 1; 0:Low-level or 1:High-level"
+  },
+  "disch_cut_off_point_different_enable": {
+    "address": 273,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Whether Lead-acid Battery discharge cut-off voltage point is enable."
+  },
+  "disch_cut_off_voltage_grid_mode": {
+    "address": 275,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "Lead-acid Battery discharge cut-off voltage in on-grid mode"
+  },
+  "shadow_fix_func_enable_2": {
+    "address": 276,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Shadow Fix Func Enable 2"
+  },
+  "meter_ct_select": {
+    "address": 277,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Meter/CT select"
+  },
+  "fvrt_function": {
+    "address": 278,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "FVRT Function"
+  },
+  "fvrt_vac_upper": {
+    "address": 279,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "If FVRT_Function is enable, FVRT Vac upper limit is available."
+  },
+  "fvrt_vac_lower": {
+    "address": 280,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "V",
+    "description": "If FVRT_Function is enable, FVRT Vac lower limit is available."
+  },
+  "bpv_connection_mode": {
+    "address": 283,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "PV connection"
+  },
+  "shut_down": {
+    "address": 284,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Shut Down"
+  },
+  "micro_grid": {
+    "address": 285,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Micro Grid"
+  },
+  "self_use_mode_backup_enable": {
+    "address": 286,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Selfuse Mode Backup En"
+  },
+  "b_self_use_backup_soc": {
+    "address": 287,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "b Self Use Backup Soc"
+  },
+  "b_lease_mode_enable": {
+    "address": 288,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "b Lease Mode Enable"
+  },
+  "b_device_lock_flag": {
+    "address": 289,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "b Device Lock Flag"
+  },
+  "manual_mode_control": {
+    "address": 290,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Manual Mode Control"
+  },
+  "feedin_on_power": {
+    "address": 291,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "W",
+    "description": "Grid connected pull in power point"
+  },
+  "b_switch_on_soc": {
+    "address": 292,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "SOC trigger point of pull in action"
+  },
+  "consume_off_power": {
+    "address": 293,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "W",
+    "description": "Power consumption off trigger point"
+  },
+  "b_switch_off_soc": {
+    "address": 294,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "%",
+    "description": "SOC trigger point of breaking action"
+  },
+  "minimum_per_on_signal": {
+    "address": 295,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "min",
+    "description": "Minimum duration of single pull in"
+  },
+  "maximum_per_day_on": {
+    "address": 296,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Maximum cumulative pickup time of the day"
+  },
+  "b_schedule_enable": {
+    "address": 297,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "b Schedule Enable"
+  },
+  "work_mode": {
+    "address": 302,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Work Mode"
+  },
+  "dry_contact_mode": {
+    "address": 303,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Dry Contact Mode"
+  },
+  "parallel_setting": {
+    "address": 304,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "Parallel Setting"
+  },
+  "external_gen_enable": {
+    "address": 305,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "External Gen En"
+  },
+  "external_gen_max_charge": {
+    "address": 306,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 10,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "W",
+    "description": "External Gen Max Charge"
+  },
+  "485_comm_fun_select": {
+    "address": 318,
+    "register_type": "holding",
+    "data_format": "uint16",
+    "si_adj": 1,
+    "signed": false,
+    "data_length": 1,
+    "data_unit": "N/A",
+    "description": "485 Comm Fun Select"
+  }
+}

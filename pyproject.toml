@@ -1,12 +1,14 @@
 [build-system]
-requires = ["setuptools >= 77.0.3"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "solaxx3"
-version = "1.0.5"
-description = "Read Solax X3 inverter registers via modbus interface (RS-485)"
+version = "2.0.0"
+description = "Read register values from a Solax X3 inverter over Modbus RTU"
 readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
 authors = [
     { name = "Flavius Moldovan", email = "mkfam@protonmail.com" },
     { name = "Philip Moldovan", email = "phdfam@protonmail.com" },
@@ -17,7 +19,6 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -27,10 +28,34 @@ classifiers = [
 ]
 keywords = ["Solax", "solax-x3", "solaxx3", "solar inverter", "RTU", "MODBUS"]
 dependencies = [
-    "pymodbus[serial] >= 3.0.0,<3.12.0",
+    "pymodbus>=3.0",
 ]
-requires-python = ">=3.8"
 
-[project.urls]
-Homepage = "https://github.com/mkfam7/solaxx3"
-Issues = "https://github.com/mkfam7/solaxx3/issues"
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=24.0",
+    "ruff>=0.4",
+    "mypy>=1.8",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["solaxx3*"]
+
+[tool.setuptools.package-data]
+solaxx3 = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
+
+[tool.mypy]
+python_version = "3.9"
+disallow_untyped_defs = true

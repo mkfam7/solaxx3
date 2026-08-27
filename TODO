@@ -1,2 +1,0 @@
-- change maximum pymodbus version when finished
-- refactor to allow mocking pymodbus version
