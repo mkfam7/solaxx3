@@ -99,7 +99,7 @@ class SolaxX3:
     def connected(self) -> bool:
         return self._connected
 
-    def __enter__(self) -> "SolaxX3":
+    def __enter__(self) -> SolaxX3:
         self.connect()
         return self
 

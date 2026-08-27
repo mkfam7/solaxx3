@@ -16,16 +16,16 @@ from .registers import RegisterRepository, default_repository
 __version__ = "2.0.0"
 
 __all__ = [
-    "SolaxX3",
-    "SolaxX3Error",
-    "SolaxConnectionError",
-    "UnknownRegisterError",
-    "RegistersNotLoadedError",
-    "RegisterReadError",
-    "RegisterValueOutOfRangeError",
     "CatalogValidationError",
     "RegisterInfo",
+    "RegisterReadError",
     "RegisterReading",
     "RegisterRepository",
+    "RegisterValueOutOfRangeError",
+    "RegistersNotLoadedError",
+    "SolaxConnectionError",
+    "SolaxX3",
+    "SolaxX3Error",
+    "UnknownRegisterError",
     "default_repository",
 ]

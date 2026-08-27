@@ -1,4 +1,3 @@
-import pytest
 
 from solaxx3.schema import validate_catalog
 

@@ -73,7 +73,7 @@ class RegisterInfo:
         return self.address + self.data_length
 
     @classmethod
-    def from_dict(cls, name: str, data: dict) -> "RegisterInfo":
+    def from_dict(cls, name: str, data: dict) -> RegisterInfo:
         try:
             return cls(
                 name=name,

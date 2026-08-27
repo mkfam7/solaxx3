@@ -13,7 +13,6 @@ authors = [
     { name = "Flavius Moldovan", email = "mkfam@protonmail.com" },
     { name = "Philip Moldovan", email = "phdfam@protonmail.com" },
 ]
-license = "MIT"
 license-files = ["LICENSE"]
 classifiers = [
     "Operating System :: OS Independent",

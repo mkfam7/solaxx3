@@ -27,7 +27,7 @@ class RegisterRepository:
         self._registers = registers
 
     @classmethod
-    def from_json_file(cls, path: str) -> "RegisterRepository":
+    def from_json_file(cls, path: str) -> RegisterRepository:
         """Build a repository from a JSON file on disk."""
 
         with open(path, "r", encoding="utf-8") as handle:
@@ -35,7 +35,7 @@ class RegisterRepository:
         return cls._from_raw(raw)
 
     @classmethod
-    def from_package_data(cls) -> "RegisterRepository":
+    def from_package_data(cls) -> RegisterRepository:
         """Build a repository from the JSON data bundled with this package."""
 
         raw_text = (
@@ -46,7 +46,7 @@ class RegisterRepository:
         return cls._from_raw(json.loads(raw_text))
 
     @classmethod
-    def _from_raw(cls, raw: Dict[str, dict]) -> "RegisterRepository":
+    def _from_raw(cls, raw: Dict[str, dict]) -> RegisterRepository:
         errors = validate_catalog(raw)
         if errors:
             raise CatalogValidationError(errors)
