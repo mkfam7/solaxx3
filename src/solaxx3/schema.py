@@ -16,9 +16,9 @@ deep inside decoding.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any
 
-REGISTER_ENTRY_SCHEMA: Dict[str, Any] = {
+REGISTER_ENTRY_SCHEMA: dict[str, Any] = {
     "type": "object",
     "required": [
         "address",
@@ -65,8 +65,8 @@ def _type_matches(value: Any, expected: str) -> bool:
     raise ValueError(f"Unsupported schema type: {expected!r}")
 
 
-def _validate_instance(instance: Any, schema: Dict[str, Any], path: str) -> List[str]:
-    errors: List[str] = []
+def _validate_instance(instance: Any, schema: dict[str, Any], path: str) -> list[str]:
+    errors: list[str] = []
 
     expected_type = schema.get("type")
     if expected_type and not _type_matches(instance, expected_type):
@@ -105,7 +105,7 @@ def _validate_instance(instance: Any, schema: Dict[str, Any], path: str) -> List
     return errors
 
 
-def validate_catalog(raw: Any) -> List[str]:
+def validate_catalog(raw: Any) -> list[str]:
     """Validate a raw (just-parsed-from-JSON) register catalog.
 
     Returns a list of human-readable error strings — empty if the catalog
@@ -115,11 +115,13 @@ def validate_catalog(raw: Any) -> List[str]:
 
     if not isinstance(raw, dict):
         return [
-            "<root>: expected an object mapping register name -> "
-            f"definition, got '{type(raw).__name__}'"
+            (
+                "<root>: expected an object mapping register name -> "
+                f"definition, got '{type(raw).__name__}'"
+            )
         ]
 
-    errors: List[str] = []
+    errors: list[str] = []
     for name, entry in raw.items():
         errors.extend(_validate_instance(entry, REGISTER_ENTRY_SCHEMA, name))
 

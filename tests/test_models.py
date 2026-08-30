@@ -4,17 +4,17 @@ from solaxx3.models import RegisterInfo
 
 
 def make_kwargs(**overrides):
-    defaults = dict(
-        name="test_register",
-        address=0,
-        register_type="input",
-        data_format="uint16",
-        data_length=1,
-        signed=False,
-        si_adj=1,
-        data_unit="V",
-        description="Test register",
-    )
+    defaults = {
+        "name": "test_register",
+        "address": 0,
+        "register_type": "input",
+        "data_format": "uint16",
+        "data_length": 1,
+        "signed": False,
+        "si_adj": 1,
+        "data_unit": "V",
+        "description": "Test register",
+    }
     defaults.update(overrides)
     return defaults
 

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Literal, NamedTuple, Optional, Union
+from typing import Literal, NamedTuple, Union
 
 RegisterType = Literal["input", "holding"]
 DataFormat = Literal["uint16", "int16", "uint32", "int32", "varchar", "datetime"]
@@ -32,8 +32,8 @@ class RegisterInfo:
     # Optional sanity bounds applied to the *decoded* value (after si_adj),
     # not the raw register word. None means "no bound configured" — most
     # registers don't have one. Only meaningful for integer registers.
-    min_value: Optional[float] = None
-    max_value: Optional[float] = None
+    min_value: float | None = None
+    max_value: float | None = None
 
     def __post_init__(self) -> None:
         if self.address < 0:

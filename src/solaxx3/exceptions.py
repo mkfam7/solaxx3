@@ -8,8 +8,6 @@ on :class:`UnknownRegisterError`).
 
 from __future__ import annotations
 
-from typing import List, Optional
-
 
 class SolaxX3Error(Exception):
     """Base class for all errors raised by this package."""
@@ -57,7 +55,7 @@ class CatalogValidationError(SolaxX3Error):
     mistakes in one pass than to fix-and-reload repeatedly.
     """
 
-    def __init__(self, errors: List[str]) -> None:
+    def __init__(self, errors: list[str]) -> None:
         self.errors = errors
         details = "\n".join(f"  - {error}" for error in errors)
         super().__init__(f"Register catalog failed validation:\n{details}")
@@ -75,8 +73,8 @@ class RegisterValueOutOfRangeError(SolaxX3Error):
         self,
         name: str,
         value: float,
-        minimum: Optional[float],
-        maximum: Optional[float],
+        minimum: float | None,
+        maximum: float | None,
     ) -> None:
         self.name = name
         self.value = value

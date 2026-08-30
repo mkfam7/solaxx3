@@ -11,7 +11,6 @@ from __future__ import annotations
 import json
 from functools import lru_cache
 from importlib import resources
-from typing import Dict, List
 
 from .exceptions import CatalogValidationError, UnknownRegisterError
 from .models import RegisterInfo, RegisterType
@@ -23,7 +22,7 @@ _DEFAULT_DATA_FILE = "registers.json"
 class RegisterRepository:
     """Read-only, in-memory catalog of :class:`RegisterInfo` definitions."""
 
-    def __init__(self, registers: Dict[str, RegisterInfo]) -> None:
+    def __init__(self, registers: dict[str, RegisterInfo]) -> None:
         self._registers = registers
 
     @classmethod
@@ -46,7 +45,7 @@ class RegisterRepository:
         return cls._from_raw(json.loads(raw_text))
 
     @classmethod
-    def _from_raw(cls, raw: Dict[str, dict]) -> RegisterRepository:
+    def _from_raw(cls, raw: dict[str, dict]) -> RegisterRepository:
         errors = validate_catalog(raw)
         if errors:
             raise CatalogValidationError(errors)
@@ -68,12 +67,12 @@ class RegisterRepository:
         except KeyError as exc:
             raise UnknownRegisterError(name) from exc
 
-    def list_names(self) -> List[str]:
+    def list_names(self) -> list[str]:
         """Return the names of every register in the catalog."""
 
         return list(self._registers.keys())
 
-    def list_names_by_type(self, register_type: RegisterType) -> List[str]:
+    def list_names_by_type(self, register_type: RegisterType) -> list[str]:
         """Return the names of every register of the given type."""
 
         return [

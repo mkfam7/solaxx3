@@ -1,4 +1,3 @@
-
 from solaxx3.schema import validate_catalog
 
 VALID_ENTRY = {

@@ -9,7 +9,7 @@ doesn't break immediately; it will be removed in a future release.
 from __future__ import annotations
 
 import warnings
-from typing import Dict, List, Literal, Union
+from typing import Literal, Union
 
 from .registers import default_repository
 
@@ -38,7 +38,7 @@ class SolaxRegistersInfo:
         )
         self._repository = default_repository()
 
-    def get_register_info(self, name: str) -> Dict[FIELDS, FIELD_VALUES]:
+    def get_register_info(self, name: str) -> dict[FIELDS, FIELD_VALUES]:
         info = self._repository.get(name)
         return {
             "address": info.address,
@@ -51,11 +51,11 @@ class SolaxRegistersInfo:
             "description": info.description,
         }
 
-    def list_register_names(self) -> List[str]:
+    def list_register_names(self) -> list[str]:
         return self._repository.list_names()
 
-    def list_holding_registers(self) -> List[str]:
+    def list_holding_registers(self) -> list[str]:
         return self._repository.list_names_by_type("holding")
 
-    def list_input_registers(self) -> List[str]:
+    def list_input_registers(self) -> list[str]:
         return self._repository.list_names_by_type("input")

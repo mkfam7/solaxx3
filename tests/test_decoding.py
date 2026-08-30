@@ -8,17 +8,17 @@ from solaxx3.models import RegisterInfo
 
 
 def make_register(**overrides) -> RegisterInfo:
-    defaults = dict(
-        name="test_register",
-        address=0,
-        register_type="input",
-        data_format="uint16",
-        data_length=1,
-        signed=False,
-        si_adj=1,
-        data_unit="V",
-        description="Test register",
-    )
+    defaults = {
+        "name": "test_register",
+        "address": 0,
+        "register_type": "input",
+        "data_format": "uint16",
+        "data_length": 1,
+        "signed": False,
+        "si_adj": 1,
+        "data_unit": "V",
+        "description": "Test register",
+    }
     defaults.update(overrides)
     return RegisterInfo(**defaults)
 
@@ -40,11 +40,14 @@ def test_decodes_32_bit_integer_from_two_words():
 
 
 def test_decodes_string_from_ascii_pairs():
-    register = make_register(data_format="varchar", data_length=2, si_adj=1, data_unit="N/A")
+    register = make_register(
+        data_format="varchar", data_length=2, si_adj=1, data_unit="N/A"
+    )
     # 'A' = 0x41, 'B' = 0x42 packed high/low byte per word
     word_ab = (ord("A") << 8) | ord("B")
     word_cd = (ord("C") << 8) | ord("D")
     assert decode_register_value(register, [word_ab, word_cd]) == "ABCD"
+
 
 def test_decodes_datetime():
     register = make_register(

@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import logging
 import time
-from typing import Any, List, Literal, Optional
+from typing import Any, Literal
 
 from pymodbus import __version__ as pymodbus_version
 from pymodbus.client import ModbusSerialClient
+from typing_extensions import Self
 
 from .decoding import decode_register_value
 from .exceptions import (
@@ -66,7 +67,7 @@ class SolaxX3:
         stopbits: Literal[0, 1, 2] = 1,
         bytesize: Literal[7, 8] = 8,
         device_id: int = 1,
-        register_repository: Optional[RegisterRepository] = None,
+        register_repository: RegisterRepository | None = None,
         max_retries: int = 3,
         retry_backoff_seconds: float = 0.2,
         validate_ranges: bool = True,
@@ -81,8 +82,8 @@ class SolaxX3:
         self._retry_backoff_seconds = retry_backoff_seconds
         self._validate_ranges = validate_ranges
 
-        self._input_registers_values: List[int] = []
-        self._holding_registers_values: List[int] = []
+        self._input_registers_values: list[int] = []
+        self._holding_registers_values: list[int] = []
 
         self._connected = False
 
@@ -99,11 +100,11 @@ class SolaxX3:
     def connected(self) -> bool:
         return self._connected
 
-    def __enter__(self) -> SolaxX3:
+    def __enter__(self) -> Self:
         self.connect()
         return self
 
-    def __exit__(self, exc_type, exc_value, traceback) -> None:
+    def __exit__(self, exc_type: Any, exc_value: Any, traceback: Any) -> None:
         self.disconnect()
 
     def connect(self) -> bool:
@@ -159,21 +160,23 @@ class SolaxX3:
 
         register_info = self._registers.get(name)
         raw_words = self._read_register_range(
-            register_info.register_type, register_info.address, register_info.data_length
+            register_info.register_type,
+            register_info.address,
+            register_info.data_length,
         )
         value = decode_register_value(
             register_info, raw_words, validate_range=self._validate_ranges
         )
         return RegisterReading(value=value, unit=register_info.data_unit)
 
-    def list_register_names(self) -> List[str]:
+    def list_register_names(self) -> list[str]:
         """Return the names of every register this client can read."""
 
         return self._registers.list_names()
 
-    def _read_register_block(self, register_type: RegisterType, read_fn) -> List[int]:
+    def _read_register_block(self, register_type: RegisterType, read_fn) -> list[int]:
         register_count = self._registers.max_register_count(register_type)
-        values: List[int] = []
+        values: list[int] = []
         address = 0
 
         while address < register_count:
@@ -281,7 +284,7 @@ class SolaxX3:
 
     def _read_register_range(
         self, register_type: RegisterType, address: int, count: int
-    ) -> List[int]:
+    ) -> list[int]:
         values = (
             self._input_registers_values
             if register_type == "input"

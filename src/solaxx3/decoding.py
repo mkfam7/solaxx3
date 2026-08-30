@@ -10,7 +10,6 @@ from __future__ import annotations
 
 from datetime import datetime
 from struct import unpack
-from typing import List
 
 from .exceptions import RegisterValueOutOfRangeError
 from .models import RegisterInfo, RegisterValue
@@ -18,7 +17,7 @@ from .utils import join_msb_lsb, twos_complement
 
 
 def decode_register_value(
-    register_info: RegisterInfo, raw_words: List[int], validate_range: bool = True
+    register_info: RegisterInfo, raw_words: list[int], validate_range: bool = True
 ) -> RegisterValue:
     """Decode ``raw_words`` (one entry per 16-bit register) per ``register_info``.
 
@@ -61,7 +60,7 @@ def _check_range(register_info: RegisterInfo, value: float) -> None:
         )
 
 
-def _decode_integer(register_info: RegisterInfo, raw_words: List[int]) -> float:
+def _decode_integer(register_info: RegisterInfo, raw_words: list[int]) -> float:
     if register_info.data_length == 1:
         value = raw_words[0]
     elif register_info.data_length == 2:
@@ -78,8 +77,8 @@ def _decode_integer(register_info: RegisterInfo, raw_words: List[int]) -> float:
     return value / register_info.si_adj
 
 
-def _decode_string(register_info: RegisterInfo, raw_words: List[int]) -> str:
-    characters: List[str] = []
+def _decode_string(register_info: RegisterInfo, raw_words: list[int]) -> str:
+    characters: list[str] = []
 
     for word in raw_words[: register_info.data_length]:
         low_byte, high_byte = unpack("BB", int.to_bytes(word, 2, "little"))
@@ -91,7 +90,7 @@ def _decode_string(register_info: RegisterInfo, raw_words: List[int]) -> str:
     return "".join(characters)
 
 
-def _decode_datetime(register_info: RegisterInfo, raw_words: List[int]) -> datetime:
+def _decode_datetime(register_info: RegisterInfo, raw_words: list[int]) -> datetime:
     sec, minute, hr, day, mon, year = raw_words[: register_info.data_length]
     text = f"{year:02}-{mon:02}-{day:02} {hr:02}:{minute:02}:{sec:02}"
     try:
