@@ -3,6 +3,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/solaxx3.svg)](https://pypi.org/project/solaxx3/)
 [![Python versions](https://img.shields.io/pypi/pyversions/solaxx3.svg)](https://pypi.org/project/solaxx3/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Build badge](https://github.com/mkfam7/solaxx3/actions/workflows/python-package.yml/badge.svg)
 
 Read register values from a **Solax X3** series inverter over **Modbus RTU** (serial/RS485).
 
@@ -62,13 +63,13 @@ finally:
 
 ```python
 SolaxX3(
-    port="/dev/ttyUSB0",        # serial device
-    baudrate=115200,            # baudrate value configured on inverter
+    port="/dev/ttyUSB0",  # serial device
+    baudrate=115200,  # baudrate value configured on inverter
     timeout=3,
-    device_id=1,                # Modbus unit/slave id of the inverter
-    max_retries=3,              # attempts per block read
+    device_id=1,  # Modbus unit/slave id of the inverter
+    max_retries=3,  # attempts per block read
     retry_backoff_seconds=0.2,  # base delay; doubles each retry
-    validate_ranges=True,       # enforce sanity bounds on decoded values
+    validate_ranges=True,  # enforce sanity bounds on decoded values
 )
 ```
 
@@ -113,7 +114,11 @@ inverter = SolaxX3(register_repository=repo)
 ## Development
 
 Contributions welcome. Clone the repository, `pip install -e ".[dev]"`, and
-run `pytest`.
+run `pytest`. See [DEVELOPMENT.md](https://github.com/mkfam7/solaxx3/blob/main/DEVELOPMENT.md)
+for the register catalog field reference, Modbus domain notes, and other
+details that aren't obvious from the code alone, and
+[CHANGELOG.md](https://github.com/mkfam7/solaxx3/blob/main/CHANGELOG.md)
+for release history.
 
 ## License
 
