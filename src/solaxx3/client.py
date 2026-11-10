@@ -4,9 +4,11 @@ from __future__ import annotations
 
 import logging
 import time
-from typing import Any, Literal
+from typing import Any, Callable, Literal
 
+import serial
 from pymodbus import __version__ as pymodbus_version
+from pymodbus import exceptions as pymodbus_exceptions
 from pymodbus.client import ModbusSerialClient
 from typing_extensions import Self
 
@@ -43,7 +45,7 @@ class SolaxX3:
         bytesize: number of bits per byte, 7 or 8 (default: 8).
         device_id: Modbus unit/slave id of the inverter (default: 1).
         register_repository: source of register definitions. Defaults to
-            the catalog bundled with this package — override only if you
+            the catalog bundled with this package -- override only if you
             need a custom or partial register set.
         max_retries: number of attempts for each block read before giving
             up and raising :class:`RegisterReadError` (default: 3). Guards
@@ -59,18 +61,18 @@ class SolaxX3:
     """
 
     def __init__(
-        self,
-        port: str = "/dev/ttyUSB0",
-        baudrate: int = 115200,
-        timeout: int = 3,
-        parity: Literal["E", "O", "N"] = "N",
-        stopbits: Literal[0, 1, 2] = 1,
-        bytesize: Literal[7, 8] = 8,
-        device_id: int = 1,
-        register_repository: RegisterRepository | None = None,
-        max_retries: int = 3,
-        retry_backoff_seconds: float = 0.2,
-        validate_ranges: bool = True,
+            self,
+            port: str = "/dev/ttyUSB0",
+            baudrate: int = 115200,
+            timeout: int = 3,
+            parity: Literal["E", "O", "N"] = "N",
+            stopbits: Literal[0, 1, 2] = 1,
+            bytesize: Literal[7, 8] = 8,
+            device_id: int = 1,
+            register_repository: RegisterRepository | None = None,
+            max_retries: int = 3,
+            retry_backoff_seconds: float = 0.2,
+            validate_ranges: bool = True,
     ) -> None:
         if max_retries < 1:
             raise ValueError(f"max_retries must be >= 1, got {max_retries}")
@@ -174,7 +176,7 @@ class SolaxX3:
 
         return self._registers.list_names()
 
-    def _read_register_block(self, register_type: RegisterType, read_fn) -> list[int]:
+    def _read_register_block(self, register_type: RegisterType, read_fn: Callable) -> list[int]:
         register_count = self._registers.max_register_count(register_type)
         values: list[int] = []
         address = 0
@@ -190,13 +192,13 @@ class SolaxX3:
         return values
 
     def _read_block_with_retry(
-        self, read_fn, register_type: RegisterType, address: int, block_size: int
+            self, read_fn: Callable, register_type: RegisterType, address: int, block_size: int
     ) -> Any:
         """Read one block, retrying transient failures with exponential backoff.
 
         A "transient failure" is either an exception raised by pymodbus
         itself (e.g. a serial timeout) or a Modbus error response
-        (``response.isError()``) — both are common on noisy RS485 links and
+        (``response.isError()``) -- both are common on noisy RS485 links and
         usually succeed on the next attempt. Raises
         :class:`RegisterReadError` only once every attempt has failed.
         """
@@ -206,7 +208,8 @@ class SolaxX3:
         for attempt in range(1, self._max_retries + 1):
             try:
                 response = self._call_read(read_fn, address, block_size)
-            except Exception as exc:  # pymodbus raises various exception types
+            except  (pymodbus_exceptions.ModbusException,
+                     serial.SerialException) as exc:  # pymodbus raises various exception types
                 last_error = exc
                 logger.warning(
                     "Attempt %d/%d: reading %s registers [%d:%d] raised %s",
@@ -242,7 +245,7 @@ class SolaxX3:
             f"attempt(s): {last_error}"
         )
 
-    def _call_read(self, read_fn, address: int, block_size: int) -> Any:
+    def _call_read(self, read_fn: Callable, address: int, block_size: int) -> Any:
         """Call ``read_fn``, self-correcting the slave/device_id keyword.
 
         The keyword name guessed in ``__init__`` from the pymodbus version
@@ -250,7 +253,7 @@ class SolaxX3:
         future rename pymodbus makes). If pymodbus rejects it with a
         ``TypeError`` naming that keyword, this flips to the other name,
         remembers it for every subsequent call on this client, and retries
-        once immediately — so a wrong guess costs one extra call the first
+        once immediately -- so a wrong guess costs one extra call the first
         time, not a permanently broken client.
         """
 
@@ -262,14 +265,14 @@ class SolaxX3:
             )
         except TypeError as exc:
             if self._slave_param_name not in str(exc):
-                raise  # an unrelated TypeError — not ours to handle
+                raise  # an unrelated TypeError -- not ours to handle
 
             corrected_name = (
                 "slave" if self._slave_param_name == "device_id" else "device_id"
             )
             logger.warning(
                 "pymodbus rejected the '%s' keyword (%s); this pymodbus "
-                "version apparently expects '%s' instead — switching to it "
+                "version apparently expects '%s' instead -- switching to it "
                 "for the rest of this client's lifetime",
                 self._slave_param_name,
                 exc,
@@ -283,7 +286,7 @@ class SolaxX3:
             )
 
     def _read_register_range(
-        self, register_type: RegisterType, address: int, count: int
+            self, register_type: RegisterType, address: int, count: int
     ) -> list[int]:
         values = (
             self._input_registers_values
@@ -302,7 +305,7 @@ class SolaxX3:
                 "map may have changed."
             )
 
-        return values[address : address + count]
+        return values[address: address + count]
 
 
 def _guess_slave_param_name(version_string: str) -> str:
@@ -315,7 +318,7 @@ def _guess_slave_param_name(version_string: str) -> str:
 
     This package requires pymodbus>=3.0 (see pyproject.toml), so only the
     "slave" / "device_id" split is handled here. This is a *guess* from the
-    version string — :meth:`SolaxX3._call_read` corrects it at runtime if
+    version string -- :meth:`SolaxX3._call_read` corrects it at runtime if
     it turns out to be wrong, so an unusual version string (a pre-release,
     a vendored fork, a future rename) degrades to "one extra retry" rather
     than a hard failure.

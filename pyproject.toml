@@ -26,7 +26,7 @@ classifiers = [
 ]
 keywords = ["Solax", "solax-x3", "solaxx3", "solar inverter", "RTU", "MODBUS"]
 dependencies = [
-    "pymodbus>=3.0",
+    "pymodbus[serial]>=3.0",
 ]
 
 [project.optional-dependencies]

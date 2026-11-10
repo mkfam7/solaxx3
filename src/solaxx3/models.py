@@ -30,7 +30,7 @@ class RegisterInfo:
     data_unit: str
     description: str
     # Optional sanity bounds applied to the *decoded* value (after si_adj),
-    # not the raw register word. None means "no bound configured" — most
+    # not the raw register word. None means "no bound configured" -- most
     # registers don't have one. Only meaningful for integer registers.
     min_value: float | None = None
     max_value: float | None = None
@@ -45,9 +45,9 @@ class RegisterInfo:
         if self.si_adj == 0:
             raise ValueError(f"{self.name}: si_adj must not be zero")
         if (
-            self.min_value is not None
-            and self.max_value is not None
-            and self.min_value > self.max_value
+                self.min_value is not None
+                and self.max_value is not None
+                and self.min_value > self.max_value
         ):
             raise ValueError(
                 f"{self.name}: min_value ({self.min_value}) is greater than "

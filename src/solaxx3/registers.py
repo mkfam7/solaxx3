@@ -105,7 +105,7 @@ def default_repository() -> RegisterRepository:
     """Return the repository built from the package's bundled data file.
 
     Cached because the catalog is immutable and reasonably large (~350
-    entries) — no need to re-parse the JSON file on every call.
+    entries) -- no need to re-parse the JSON file on every call.
     """
 
     return RegisterRepository.from_package_data()

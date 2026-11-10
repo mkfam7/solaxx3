@@ -1,6 +1,6 @@
 """Schema validation for the register catalog JSON file.
 
-Deliberately dependency-free (no ``jsonschema`` package) — the catalog only
+Deliberately dependency-free (no ``jsonschema`` package) -- the catalog only
 needs a handful of keywords, and hand-rolling them keeps validation working
 in minimal environments without an extra install. The schema below is
 written in real JSON Schema shape (``type``/``properties``/``required``/
@@ -108,7 +108,7 @@ def _validate_instance(instance: Any, schema: dict[str, Any], path: str) -> list
 def validate_catalog(raw: Any) -> list[str]:
     """Validate a raw (just-parsed-from-JSON) register catalog.
 
-    Returns a list of human-readable error strings — empty if the catalog
+    Returns a list of human-readable error strings -- empty if the catalog
     is valid. Every entry is checked, and all errors are collected, rather
     than stopping at the first problem.
     """
@@ -130,9 +130,9 @@ def validate_catalog(raw: Any) -> list[str]:
             min_value = entry.get("min_value")
             max_value = entry.get("max_value")
             if (
-                isinstance(min_value, (int, float))
-                and isinstance(max_value, (int, float))
-                and min_value > max_value
+                    isinstance(min_value, (int, float))
+                    and isinstance(max_value, (int, float))
+                    and min_value > max_value
             ):
                 errors.append(
                     f"{name}: min_value ({min_value}) is greater than "

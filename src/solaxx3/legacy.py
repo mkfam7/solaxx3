@@ -9,7 +9,7 @@ doesn't break immediately; it will be removed in a future release.
 from __future__ import annotations
 
 import warnings
-from typing import Literal, Union
+from typing import Any, Literal, Union
 
 from .registers import default_repository
 
@@ -23,7 +23,7 @@ FIELDS = Literal[
     "data_length",
     "description",
 ]
-FIELD_VALUES = Union[int, str]
+FIELD_VALUES = Union[int, Any]
 
 
 class SolaxRegistersInfo:
