@@ -250,9 +250,8 @@ class TestSelfCorrectingSlaveParam:
         client.client.read_input_registers.side_effect = broken_read_fn
         client.client.read_holding_registers.return_value = modbus_response([0] * 100)
 
-        with patch("solaxx3.client.time.sleep"):
-            with pytest.raises(RegisterReadError):
-                client.read_all_registers()
+        with patch("solaxx3.client.time.sleep"), pytest.raises(RegisterReadError):
+            client.read_all_registers()
 
         # the guess was never "corrected" because this wasn't a keyword mismatch
         assert client._slave_param_name == "device_id"
@@ -317,9 +316,8 @@ class TestRetry:
         error_response.isError.return_value = True
         client.client.read_input_registers.return_value = error_response
 
-        with patch("solaxx3.client.time.sleep"):
-            with pytest.raises(RegisterReadError):
-                client.read_all_registers()
+        with patch("solaxx3.client.time.sleep"), pytest.raises(RegisterReadError):
+            client.read_all_registers()
 
         # default max_retries is 3
         assert client.client.read_input_registers.call_count == 3
@@ -333,9 +331,8 @@ class TestRetry:
         client.client.read_input_registers.return_value = error_response
         client.client.read_holding_registers.return_value = modbus_response([1])
 
-        with patch("solaxx3.client.time.sleep") as mock_sleep:
-            with pytest.raises(RegisterReadError):
-                client.read_all_registers()
+        with patch("solaxx3.client.time.sleep") as mock_sleep, pytest.raises(RegisterReadError):
+            client.read_all_registers()
 
         # default retry_backoff_seconds=0.2, doubling: 0.2, 0.4 (2 sleeps for 3 attempts)
         assert [call.args[0] for call in mock_sleep.call_args_list] == [0.2, 0.4]
@@ -357,9 +354,8 @@ class TestRetry:
             instance.read_input_registers.return_value = error_response
             instance.read_holding_registers.return_value = modbus_response([1])
 
-            with patch("solaxx3.client.time.sleep") as mock_sleep:
-                with pytest.raises(RegisterReadError):
-                    c.read_all_registers()
+            with patch("solaxx3.client.time.sleep") as mock_sleep, pytest.raises(RegisterReadError):
+                c.read_all_registers()
 
             assert instance.read_input_registers.call_count == 5
             assert mock_sleep.call_count == 4

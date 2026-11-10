@@ -104,7 +104,7 @@ class SolaxX3:
         self.connect()
         return self
 
-    def __exit__(self, exc_type: Any, exc_value: Any, traceback: Any) -> None:
+    def __exit__(self, exc_type: object, exc_value: object, traceback: object) -> None:
         self.disconnect()
 
     def connect(self) -> bool:
