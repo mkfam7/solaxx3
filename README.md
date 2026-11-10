@@ -26,8 +26,7 @@ decoding logic yourself.
 pip install solaxx3
 ```
 
-Requires Python 3.9+ and [pymodbus](https://pypi.org/project/pymodbus/) 3.0+
-(installed automatically as a dependency).
+Requires Python 3.10+ and [pymodbus](https://pypi.org/project/pymodbus/) 3.0+ (installed automatically as a dependency).
 
 ## Quick start
 
