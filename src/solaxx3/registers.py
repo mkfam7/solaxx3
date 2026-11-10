@@ -39,7 +39,7 @@ class RegisterRepository:
 
         raw_text = (
             resources.files("solaxx3")
-            .joinpath("data", _DEFAULT_DATA_FILE)
+            .joinpath("data").joinpath(_DEFAULT_DATA_FILE)
             .read_text(encoding="utf-8")
         )
         return cls._from_raw(json.loads(raw_text))

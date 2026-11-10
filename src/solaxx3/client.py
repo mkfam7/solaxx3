@@ -6,9 +6,7 @@ import logging
 import time
 from typing import Any, Callable, Literal
 
-import serial
 from pymodbus import __version__ as pymodbus_version
-from pymodbus import exceptions as pymodbus_exceptions
 from pymodbus.client import ModbusSerialClient
 from typing_extensions import Self
 
@@ -208,8 +206,7 @@ class SolaxX3:
         for attempt in range(1, self._max_retries + 1):
             try:
                 response = self._call_read(read_fn, address, block_size)
-            except  (pymodbus_exceptions.ModbusException,
-                     serial.SerialException) as exc:  # pymodbus raises various exception types
+            except Exception as exc:  # pymodbus raises various exception types
                 last_error = exc
                 logger.warning(
                     "Attempt %d/%d: reading %s registers [%d:%d] raised %s",
